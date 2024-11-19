@@ -41,10 +41,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pictureBox2 = new PictureBox();
             tabelaCultivo = new Guna.UI2.WinForms.Guna2DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
@@ -63,39 +59,38 @@
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             panel2 = new Panel();
-            btn_Cultivo = new Guna.UI2.WinForms.Guna2GradientPanel();
-            pictureBox6 = new PictureBox();
-            label31 = new Label();
-            guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             label33 = new Label();
             pictureBox8 = new PictureBox();
+            label31 = new Label();
+            pictureBox6 = new PictureBox();
+            label35 = new Label();
             panel41 = new Panel();
             label39 = new Label();
             pictureBox14 = new PictureBox();
+            label32 = new Label();
             panel40 = new Panel();
             label38 = new Label();
             pictureBox13 = new PictureBox();
+            pictureBox10 = new PictureBox();
             panel39 = new Panel();
             label37 = new Label();
             pictureBox12 = new PictureBox();
+            btn_estoque = new Button();
+            btn_relatorio = new Button();
             panel38 = new Panel();
             label36 = new Label();
             pictureBox11 = new PictureBox();
-            panel37 = new Panel();
-            label35 = new Label();
-            pictureBox10 = new PictureBox();
-            panel36 = new Panel();
+            button2 = new Button();
+            pictureBox7 = new PictureBox();
+            guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
+            btn_monitoramento = new Button();
+            guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            pictureBox5 = new PictureBox();
+            guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            button4 = new Button();
             label34 = new Label();
             pictureBox9 = new PictureBox();
-            panel34 = new Panel();
-            label32 = new Label();
-            pictureBox7 = new PictureBox();
-            panel32 = new Panel();
-            label30 = new Label();
-            pictureBox5 = new PictureBox();
-            guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
-            guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            btn_saude = new Button();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
             label29 = new Label();
@@ -111,26 +106,20 @@
             panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
-            btn_Cultivo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             panel41.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             panel40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             panel39.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             panel38.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            panel37.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            panel36.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            panel34.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -145,10 +134,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 19;
             pictureBox2.TabStop = false;
-
-
-            //
-            //
             // 
             // tabelaCultivo
             // 
@@ -374,80 +359,40 @@
             BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BarraPesquisa.Size = new Size(312, 36);
             BarraPesquisa.TabIndex = 0;
+            BarraPesquisa.TextChanged += BarraPesquisa_TextChanged;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(btn_Cultivo);
-            panel2.Controls.Add(guna2GradientPanel2);
+            panel2.Controls.Add(label33);
+            panel2.Controls.Add(pictureBox8);
+            panel2.Controls.Add(label31);
+            panel2.Controls.Add(pictureBox6);
+            panel2.Controls.Add(label35);
             panel2.Controls.Add(panel41);
+            panel2.Controls.Add(label32);
             panel2.Controls.Add(panel40);
+            panel2.Controls.Add(pictureBox10);
             panel2.Controls.Add(panel39);
+            panel2.Controls.Add(btn_estoque);
+            panel2.Controls.Add(btn_relatorio);
             panel2.Controls.Add(panel38);
-            panel2.Controls.Add(panel37);
-            panel2.Controls.Add(panel36);
-            panel2.Controls.Add(panel34);
-            panel2.Controls.Add(panel32);
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(pictureBox7);
             panel2.Controls.Add(guna2Separator3);
+            panel2.Controls.Add(btn_monitoramento);
             panel2.Controls.Add(guna2Separator2);
+            panel2.Controls.Add(pictureBox5);
             panel2.Controls.Add(guna2Separator1);
+            panel2.Controls.Add(button4);
+            panel2.Controls.Add(label34);
+            panel2.Controls.Add(pictureBox9);
+            panel2.Controls.Add(btn_saude);
             panel2.Location = new Point(0, 66);
             panel2.Name = "panel2";
             panel2.Size = new Size(169, 615);
             panel2.TabIndex = 14;
-            // 
-            // btn_Cultivo
-            // 
-            btn_Cultivo.BorderRadius = 4;
-            btn_Cultivo.Controls.Add(pictureBox6);
-            btn_Cultivo.Controls.Add(label31);
-            btn_Cultivo.CustomizableEdges = customizableEdges7;
-            btn_Cultivo.FillColor = Color.FromArgb(37, 213, 116);
-            btn_Cultivo.FillColor2 = Color.FromArgb(50, 159, 99);
-            btn_Cultivo.Location = new Point(12, 72);
-            btn_Cultivo.Name = "btn_Cultivo";
-            btn_Cultivo.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btn_Cultivo.Size = new Size(149, 35);
-            btn_Cultivo.TabIndex = 8;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackColor = Color.Transparent;
-            pictureBox6.Cursor = Cursors.Hand;
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(7, 7);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(20, 20);
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.TabIndex = 6;
-            pictureBox6.TabStop = false;
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.BackColor = Color.Transparent;
-            label31.Cursor = Cursors.Hand;
-            label31.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label31.ForeColor = Color.White;
-            label31.Location = new Point(33, 7);
-            label31.Name = "label31";
-            label31.Size = new Size(56, 19);
-            label31.TabIndex = 6;
-            label31.Text = "Cultivo";
-            // 
-            // guna2GradientPanel2
-            // 
-            guna2GradientPanel2.BorderRadius = 4;
-            guna2GradientPanel2.Controls.Add(label33);
-            guna2GradientPanel2.Controls.Add(pictureBox8);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges9;
-            guna2GradientPanel2.FillColor = Color.Transparent;
-            guna2GradientPanel2.FillColor2 = Color.Transparent;
-            guna2GradientPanel2.Location = new Point(12, 154);
-            guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2GradientPanel2.Size = new Size(149, 35);
-            guna2GradientPanel2.TabIndex = 7;
+            panel2.Paint += panel2_Paint;
             // 
             // label33
             // 
@@ -456,10 +401,10 @@
             label33.Cursor = Cursors.Hand;
             label33.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label33.ForeColor = Color.Gray;
-            label33.Location = new Point(33, 10);
+            label33.Location = new Point(45, 163);
             label33.Name = "label33";
             label33.Size = new Size(61, 19);
-            label33.TabIndex = 6;
+            label33.TabIndex = 41;
             label33.Text = "Estoque";
             // 
             // pictureBox8
@@ -467,12 +412,50 @@
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Cursor = Cursors.Hand;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(7, 9);
+            pictureBox8.Location = new Point(19, 163);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(20, 20);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox8.TabIndex = 6;
+            pictureBox8.TabIndex = 40;
             pictureBox8.TabStop = false;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.BackColor = Color.Transparent;
+            label31.Cursor = Cursors.Hand;
+            label31.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label31.ForeColor = Color.Gray;
+            label31.Location = new Point(45, 79);
+            label31.Name = "label31";
+            label31.Size = new Size(56, 19);
+            label31.TabIndex = 39;
+            label31.Text = "Cultivo";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackColor = Color.Transparent;
+            pictureBox6.Cursor = Cursors.Hand;
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(19, 79);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(20, 20);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 38;
+            pictureBox6.TabStop = false;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.BackColor = Color.Transparent;
+            label35.Cursor = Cursors.Hand;
+            label35.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label35.ForeColor = Color.Gray;
+            label35.Location = new Point(45, 243);
+            label35.Name = "label35";
+            label35.Size = new Size(77, 19);
+            label35.TabIndex = 21;
+            label35.Text = "Relatórios";
             // 
             // panel41
             // 
@@ -508,6 +491,18 @@
             pictureBox14.TabIndex = 6;
             pictureBox14.TabStop = false;
             // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Cursor = Cursors.Hand;
+            label32.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label32.ForeColor = Color.Gray;
+            label32.Location = new Point(39, 120);
+            label32.Name = "label32";
+            label32.Size = new Size(114, 19);
+            label32.TabIndex = 30;
+            label32.Text = "Monitoramento";
+            // 
             // panel40
             // 
             panel40.BackColor = Color.Transparent;
@@ -541,6 +536,18 @@
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox13.TabIndex = 6;
             pictureBox13.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Transparent;
+            pictureBox10.Cursor = Cursors.Hand;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(19, 241);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(20, 20);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 29;
+            pictureBox10.TabStop = false;
             // 
             // panel39
             // 
@@ -576,6 +583,24 @@
             pictureBox12.TabIndex = 6;
             pictureBox12.TabStop = false;
             // 
+            // btn_estoque
+            // 
+            btn_estoque.Location = new Point(12, 154);
+            btn_estoque.Name = "btn_estoque";
+            btn_estoque.Size = new Size(144, 35);
+            btn_estoque.TabIndex = 32;
+            btn_estoque.UseVisualStyleBackColor = true;
+            btn_estoque.Click += btn_estoque_Click;
+            // 
+            // btn_relatorio
+            // 
+            btn_relatorio.Location = new Point(12, 235);
+            btn_relatorio.Name = "btn_relatorio";
+            btn_relatorio.Size = new Size(144, 35);
+            btn_relatorio.TabIndex = 37;
+            btn_relatorio.UseVisualStyleBackColor = true;
+            btn_relatorio.Click += btn_relatorio_Click;
+            // 
             // panel38
             // 
             panel38.BackColor = Color.Transparent;
@@ -610,141 +635,24 @@
             pictureBox11.TabIndex = 6;
             pictureBox11.TabStop = false;
             // 
-            // panel37
+            // button2
             // 
-            panel37.BackColor = Color.Transparent;
-            panel37.Controls.Add(label35);
-            panel37.Controls.Add(pictureBox10);
-            panel37.Location = new Point(12, 236);
-            panel37.Name = "panel37";
-            panel37.Size = new Size(147, 35);
-            panel37.TabIndex = 11;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Cursor = Cursors.Hand;
-            label35.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label35.ForeColor = Color.Gray;
-            label35.Location = new Point(33, 8);
-            label35.Name = "label35";
-            label35.Size = new Size(77, 19);
-            label35.TabIndex = 6;
-            label35.Text = "Relatórios";
-            // 
-            // pictureBox10
-            // 
-            pictureBox10.BackColor = Color.Transparent;
-            pictureBox10.Cursor = Cursors.Hand;
-            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(7, 7);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(20, 20);
-            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox10.TabIndex = 6;
-            pictureBox10.TabStop = false;
-            // 
-            // panel36
-            // 
-            panel36.BackColor = Color.Transparent;
-            panel36.Controls.Add(label34);
-            panel36.Controls.Add(pictureBox9);
-            panel36.Location = new Point(12, 195);
-            panel36.Name = "panel36";
-            panel36.Size = new Size(147, 35);
-            panel36.TabIndex = 10;
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.Cursor = Cursors.Hand;
-            label34.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label34.ForeColor = Color.Gray;
-            label34.Location = new Point(33, 8);
-            label34.Name = "label34";
-            label34.Size = new Size(50, 19);
-            label34.TabIndex = 6;
-            label34.Text = "Saúde";
-            // 
-            // pictureBox9
-            // 
-            pictureBox9.BackColor = Color.Transparent;
-            pictureBox9.Cursor = Cursors.Hand;
-            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(7, 7);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(20, 20);
-            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox9.TabIndex = 6;
-            pictureBox9.TabStop = false;
-            // 
-            // panel34
-            // 
-            panel34.BackColor = Color.Transparent;
-            panel34.Controls.Add(label32);
-            panel34.Controls.Add(pictureBox7);
-            panel34.Location = new Point(12, 113);
-            panel34.Name = "panel34";
-            panel34.Size = new Size(149, 35);
-            panel34.TabIndex = 8;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Cursor = Cursors.Hand;
-            label32.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label32.ForeColor = Color.Gray;
-            label32.Location = new Point(33, 8);
-            label32.Name = "label32";
-            label32.Size = new Size(114, 19);
-            label32.TabIndex = 6;
-            label32.Text = "Monitoramento";
+            button2.Location = new Point(12, 71);
+            button2.Name = "button2";
+            button2.Size = new Size(144, 35);
+            button2.TabIndex = 33;
             // 
             // pictureBox7
             // 
             pictureBox7.BackColor = Color.Transparent;
             pictureBox7.Cursor = Cursors.Hand;
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(7, 7);
+            pictureBox7.Location = new Point(16, 120);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(20, 20);
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 6;
+            pictureBox7.TabIndex = 28;
             pictureBox7.TabStop = false;
-            // 
-            // panel32
-            // 
-            panel32.BackColor = Color.Transparent;
-            panel32.Controls.Add(label30);
-            panel32.Controls.Add(pictureBox5);
-            panel32.Location = new Point(12, 31);
-            panel32.Name = "panel32";
-            panel32.Size = new Size(147, 35);
-            panel32.TabIndex = 1;
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Cursor = Cursors.Hand;
-            label30.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label30.ForeColor = Color.Gray;
-            label30.Location = new Point(33, 8);
-            label30.Name = "label30";
-            label30.Size = new Size(82, 19);
-            label30.TabIndex = 6;
-            label30.Text = "Dashboard";
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackColor = Color.Transparent;
-            pictureBox5.Cursor = Cursors.Hand;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(7, 7);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(20, 20);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 6;
-            pictureBox5.TabStop = false;
             // 
             // guna2Separator3
             // 
@@ -753,6 +661,16 @@
             guna2Separator3.Size = new Size(149, 10);
             guna2Separator3.TabIndex = 7;
             // 
+            // btn_monitoramento
+            // 
+            btn_monitoramento.BackColor = Color.Transparent;
+            btn_monitoramento.Location = new Point(12, 113);
+            btn_monitoramento.Name = "btn_monitoramento";
+            btn_monitoramento.Size = new Size(144, 35);
+            btn_monitoramento.TabIndex = 36;
+            btn_monitoramento.UseVisualStyleBackColor = false;
+            btn_monitoramento.Click += btn_monitoramento_Click;
+            // 
             // guna2Separator2
             // 
             guna2Separator2.Location = new Point(12, 298);
@@ -760,12 +678,74 @@
             guna2Separator2.Size = new Size(149, 10);
             guna2Separator2.TabIndex = 6;
             // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = Color.Transparent;
+            pictureBox5.Cursor = Cursors.Hand;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(19, 37);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(20, 20);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 31;
+            pictureBox5.TabStop = false;
+            // 
             // guna2Separator1
             // 
             guna2Separator1.Location = new Point(12, 416);
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(149, 10);
             guna2Separator1.TabIndex = 0;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderColor = Color.FromArgb(37, 213, 116);
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 159, 99);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(37, 213, 116);
+            button4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button4.ForeColor = Color.Gray;
+            button4.Location = new Point(12, 30);
+            button4.Name = "button4";
+            button4.Size = new Size(144, 35);
+            button4.TabIndex = 35;
+            button4.Text = "Dashboard";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.BackColor = Color.Transparent;
+            label34.Cursor = Cursors.Hand;
+            label34.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label34.ForeColor = Color.Gray;
+            label34.Location = new Point(49, 202);
+            label34.Name = "label34";
+            label34.Size = new Size(50, 19);
+            label34.TabIndex = 27;
+            label34.Text = "Saúde";
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackColor = Color.Transparent;
+            pictureBox9.Cursor = Cursors.Hand;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(19, 199);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(20, 20);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 25;
+            pictureBox9.TabStop = false;
+            // 
+            // btn_saude
+            // 
+            btn_saude.Location = new Point(12, 194);
+            btn_saude.Name = "btn_saude";
+            btn_saude.Size = new Size(144, 35);
+            btn_saude.TabIndex = 34;
+            btn_saude.UseVisualStyleBackColor = true;
+            btn_saude.Click += btn_saude_Click;
             // 
             // panel3
             // 
@@ -812,7 +792,7 @@
             // guna2GradientButton1
             // 
             guna2GradientButton1.BorderRadius = 4;
-            guna2GradientButton1.CustomizableEdges = customizableEdges11;
+            guna2GradientButton1.CustomizableEdges = customizableEdges7;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -824,7 +804,7 @@
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Location = new Point(733, 580);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientButton1.Size = new Size(147, 34);
             guna2GradientButton1.TabIndex = 20;
             guna2GradientButton1.Text = "+ NOVO CULTIVO";
@@ -856,46 +836,30 @@
             panel26.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
-            btn_Cultivo.ResumeLayout(false);
-            btn_Cultivo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            guna2GradientPanel2.ResumeLayout(false);
-            guna2GradientPanel2.PerformLayout();
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel41.ResumeLayout(false);
             panel41.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             panel40.ResumeLayout(false);
             panel40.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             panel39.ResumeLayout(false);
             panel39.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             panel38.ResumeLayout(false);
             panel38.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            panel37.ResumeLayout(false);
-            panel37.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            panel36.ResumeLayout(false);
-            panel36.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            panel34.ResumeLayout(false);
-            panel34.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panel32.ResumeLayout(false);
-            panel32.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
-
-
-
-
         }
 
         #endregion
@@ -914,9 +878,6 @@
         private PictureBox pictureBox4;
         private Guna.UI2.WinForms.Guna2TextBox BarraPesquisa;
         private Panel panel2;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private Label label33;
-        private PictureBox pictureBox8;
         private Panel panel41;
         private Label label39;
         private PictureBox pictureBox14;
@@ -929,33 +890,35 @@
         private Panel panel38;
         private Label label36;
         private PictureBox pictureBox11;
-        private Panel panel37;
-        private Label label35;
-        private PictureBox pictureBox10;
-        private Panel panel36;
-        private Label label34;
-        private PictureBox pictureBox9;
-        private Panel panel34;
-        private Label label32;
-        private PictureBox pictureBox7;
         private Panel panel33;
-        private Label label31;
-        private PictureBox pictureBox6;
-        private Panel panel32;
-        private Label label30;
-        private PictureBox pictureBox5;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator3;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Panel panel3;
         private PictureBox pictureBox1;
         private Label label29;
-        private Guna.UI2.WinForms.Guna2GradientPanel btn_Cultivo;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private Label label2;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Label label35;
+        private Label label32;
+        private PictureBox pictureBox10;
+        private Button btn_relatorio;
+        private PictureBox pictureBox7;
+        private Button btn_monitoramento;
+        private PictureBox pictureBox5;
+        private Button button4;
+        private Label label34;
+        private Button btn_estoque;
+        private PictureBox pictureBox9;
+        private Button btn_saude;
+        private Button button2;
+        private Label label33;
+        private PictureBox pictureBox8;
+        private Label label31;
+        private PictureBox pictureBox6;
     }
 }

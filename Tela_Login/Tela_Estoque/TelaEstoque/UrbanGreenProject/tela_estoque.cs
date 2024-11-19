@@ -530,10 +530,36 @@ namespace UrbanGreenProject
             this.Hide();
             telaCultivo.Show();
         }
+        //dashboard
+        private void button4_Click(object sender, EventArgs e)
+        {
 
-       
+        }
 
-       
+        private void btn_monitoramento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_estoque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_saude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_relatorio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BarraPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

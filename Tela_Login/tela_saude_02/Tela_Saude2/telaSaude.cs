@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Tela_Cultivo;
+using static DashboardForm.Dashboard;
 
 namespace Tela_Saude2
 {
@@ -15,6 +16,9 @@ namespace Tela_Saude2
         private SqlDataAdapter adapter;
         private DataTable saudeTable;
         private string connectionString;
+        private int indiceAtual = 0;  // Armazena o índice da espécie atual a ser exibida
+        private List<string> especies = new List<string>(); // Lista de espécies para navegação
+
 
 
         public telaSaude()
@@ -24,7 +28,7 @@ namespace Tela_Saude2
             loadSaude();
             ConfigureDataGridView();
             CarregarTiposParaComboBox(); // Carrega os tipos de plantação no ComboBox
-
+            AtualizarGraficos();
         }
 
 
@@ -89,14 +93,14 @@ namespace Tela_Saude2
 
 
                 // Adicionando os parâmetros ao comando
-                insertSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int,0,"cod_pragas_doencas");
-                insertSaude.Parameters.Add("@cod_plantacao", SqlDbType.Int,0 ,"cod_plantacao");
+                insertSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int, 0, "cod_pragas_doencas");
+                insertSaude.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 insertSaude.Parameters.Add("@nome_comum", SqlDbType.VarChar, 100, "nome_comum");
-                insertSaude.Parameters.Add("@nome_cientifico", SqlDbType.VarChar, 100,"nome_cientifico");
+                insertSaude.Parameters.Add("@nome_cientifico", SqlDbType.VarChar, 100, "nome_cientifico");
                 insertSaude.Parameters.Add("@tipo", SqlDbType.VarChar, 100, "tipo");
-                insertSaude.Parameters.Add("@data_deteccao", SqlDbType.Date,0, "data_deteccao");
+                insertSaude.Parameters.Add("@data_deteccao", SqlDbType.Date, 0, "data_deteccao");
                 insertSaude.Parameters.Add("@eficacia", SqlDbType.Int, 0, "eficacia");
-               
+
                 insertSaude.Parameters.Add("@severidade", SqlDbType.VarChar, 100, "severidade");
                 insertSaude.Parameters.Add("@metodo_controle", SqlDbType.VarChar, 255, "metodo_controle");
                 adapter.InsertCommand = insertSaude;
@@ -116,15 +120,15 @@ namespace Tela_Saude2
 
                 // Adicionando os parâmetros ao comando
                 updateSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int, 0, "cod_pragas_doencas");
-                updateSaude.Parameters.Add("@cod_plantacao", SqlDbType.Int,0, "cod_plantacao");
+                updateSaude.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 updateSaude.Parameters.Add("@nome_comum", SqlDbType.VarChar, 100, "nome_comum");
                 updateSaude.Parameters.Add("@nome_cientifico", SqlDbType.VarChar, 100, "nome_cientifico");
                 updateSaude.Parameters.Add("@tipo", SqlDbType.VarChar, 100, "tipo");
                 updateSaude.Parameters.Add("@data_deteccao", SqlDbType.Date, 0, "data_deteccao");
                 updateSaude.Parameters.Add("@eficacia", SqlDbType.Int, 0, "eficacia");
-                
-                updateSaude.Parameters.Add("@severidade", SqlDbType.VarChar, 100,"severidade");
-                updateSaude.Parameters.Add("@metodo_controle", SqlDbType.VarChar, 255,"metodo_controle");
+
+                updateSaude.Parameters.Add("@severidade", SqlDbType.VarChar, 100, "severidade");
+                updateSaude.Parameters.Add("@metodo_controle", SqlDbType.VarChar, 255, "metodo_controle");
                 adapter.UpdateCommand = updateSaude;
 
                 SqlCommand deleteSaude = new SqlCommand(
@@ -281,26 +285,26 @@ namespace Tela_Saude2
 
 
         private bool DoesCodeExist(int codPragasDoencas)
-{
-    using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
-    {
-        try
         {
-            connection.Open();
-            // Altere a consulta para verificar a tabela e coluna corretas (Controle_pragas_doencas)
-            SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Controle_pragas_doencas WHERE cod_pragas_doencas = @cod_pragas_doencas", connection);
-            command.Parameters.AddWithValue("@cod_pragas_doencas", codPragasDoencas);
-            int count = (int)command.ExecuteScalar();
+            using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    // Altere a consulta para verificar a tabela e coluna corretas (Controle_pragas_doencas)
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Controle_pragas_doencas WHERE cod_pragas_doencas = @cod_pragas_doencas", connection);
+                    command.Parameters.AddWithValue("@cod_pragas_doencas", codPragasDoencas);
+                    int count = (int)command.ExecuteScalar();
 
-            return count > 0; // Retorna true se o código já existe, false caso contrário
+                    return count > 0; // Retorna true se o código já existe, false caso contrário
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao verificar código: " + ex.Message);
+                    return true; // Retorna true para evitar a inserção em caso de erro
+                }
+            }
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Erro ao verificar código: " + ex.Message);
-            return true; // Retorna true para evitar a inserção em caso de erro
-        }
-    }
-}
 
 
 
@@ -421,7 +425,9 @@ namespace Tela_Saude2
 
                         // Confirmar as alterações no DataTable
                         saudeTable.AcceptChanges();
+
                         tabela_Doenca.Refresh(); // Atualizar exibição no DataGridView
+                        AtualizarGraficos();
                     }
                     catch (Exception ex)
                     {
@@ -436,6 +442,210 @@ namespace Tela_Saude2
             }
         }
 
+
+
+        private int MapearSeveridadeParaValor(string severidade)
+        {
+            switch (severidade)
+            {
+                case "Alta": return 70;
+                case "Média": return 50;
+                case "Baixa": return 30;
+                default: return 0; // Valor padrão caso o texto não corresponda
+            }
+        }
+
+        private Dictionary<string, double> CalcularPorcentagemPorEspecie()
+        {
+            var resultados = new Dictionary<string, double>();
+
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                string query = @"
+            SELECT 
+                p.especie AS Especie,
+                AVG(pd.eficacia) AS MediaEficacia,
+                AVG(
+                    CASE 
+                        WHEN pd.severidade = 'Alta' THEN 70
+                        WHEN pd.severidade = 'Média' THEN 50
+                        WHEN pd.severidade = 'Baixa' THEN 30
+                        ELSE 0
+                    END
+                ) AS MediaSeveridade
+            FROM 
+                Plantacao p
+            LEFT JOIN 
+                Controle_pragas_doencas pd ON p.cod_plantacao = pd.cod_plantacao
+            WHERE 
+                pd.eficacia IS NOT NULL AND pd.severidade IS NOT NULL
+            GROUP BY 
+                p.especie";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string especie = reader["Especie"].ToString();
+                        double mediaEficacia = reader["MediaEficacia"] != DBNull.Value
+                            ? Convert.ToDouble(reader["MediaEficacia"])
+                            : 0;
+
+                        double mediaSeveridade = reader["MediaSeveridade"] != DBNull.Value
+                            ? Convert.ToDouble(reader["MediaSeveridade"])
+                            : 0;
+
+                        // Combinar eficácia e severidade em uma única porcentagem
+                        double porcentagem = (mediaEficacia / (mediaEficacia + mediaSeveridade)) * 100;
+                        resultados[especie] = porcentagem;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao calcular porcentagens por espécie: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return resultados;
+        }
+
+
+
+        private void AtualizarGraficos()
+        {
+            var dadosEspecies = CalcularPorcentagemPorEspecie();
+            especies = dadosEspecies.Keys.ToList(); // Atualiza a lista de espécies
+            int totalEspecies = especies.Count;
+
+            // Atualiza os gráficos com base no índice atual
+            if (totalEspecies > 0 && indiceAtual < totalEspecies)
+            {
+                // Exibe as espécies 1, 2 e 3
+                if (indiceAtual < totalEspecies)
+                {
+                    grafico1.Value = (int)dadosEspecies[especies[indiceAtual]]; // Primeira espécie
+                    graficototal1.Text = $"{grafico1.Value}%";
+                    titulografico1.Text = especies[indiceAtual]; // Atualiza o título do gráfico 1
+                    PosicionarSaudeNaParteSuperior(titulografico1, caixagrafico1);
+                }
+                else
+                {
+                    grafico1.Value = 0;
+                    graficototal1.Text = "0%";
+                    titulografico1.Text = "Sem dados";
+                    PosicionarSaudeNaParteSuperior(titulografico1, caixagrafico1); // Posiciona o título na parte superior de caixagrafico1
+                }
+
+                if (indiceAtual + 1 < totalEspecies)
+                {
+                    grafico2.Value = (int)dadosEspecies[especies[indiceAtual + 1]]; // Segunda espécie
+                    graficototal2.Text = $"{grafico2.Value}%";
+                    titulografico2.Text = especies[indiceAtual + 1]; // Atualiza o título do gráfico 2
+                    PosicionarSaudeNaParteSuperior(titulografico2, caixagrafico2);
+                }
+
+                else
+                {
+                    grafico2.Value = 0;
+                    graficototal2.Text = "0%";
+                    titulografico2.Text = "Sem dados";
+                    PosicionarSaudeNaParteSuperior(titulografico2, caixagrafico2); // Posiciona o título na parte superior de caixagrafico2
+                }
+
+                if (indiceAtual + 2 < totalEspecies)
+                {
+                    grafico3.Value = (int)dadosEspecies[especies[indiceAtual + 2]]; // Terceira espécie
+                    graficototal03.Text = $"{grafico3.Value}%";
+                    titulografico3.Text = especies[indiceAtual + 2]; // Atualiza o título do gráfico 3
+                    PosicionarSaudeNaParteSuperior(titulografico3, caixagrafico3);
+                }
+                else
+                {
+                    grafico3.Value = 0;
+                    graficototal03.Text = "0%";
+                    // titulografico3.Text = "Sem dados";
+                    PosicionarSaudeNaParteSuperior(titulografico3, caixagrafico3); // Posiciona o título na parte superior de caixagrafico3
+                }
+            }
+        }
+
+
+        private void PosicionarSaudeNaParteSuperior(Control txtControl, Control caixaControl)
+        {
+            // Define o deslocamento vertical para o topo (com um pequeno espaço de 10px)
+            txtControl.Top = 10; // Deixe o texto bem no topo, ajustando conforme necessário
+
+            // Centraliza horizontalmente na caixa
+            txtControl.Left = (caixaControl.Width - txtControl.Width) / 2;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (indiceAtual + 3 < especies.Count) // Garante que não ultrapasse o número total de espécies
+            {
+                indiceAtual += 3;  // Move para o próximo conjunto de 3 espécies
+                AtualizarGraficos();  // Atualiza os gráficos
+            }
+
+        }
+
+        private void btn_Anterio_Click(object sender, EventArgs e)
+        {
+            if (indiceAtual > 0) // Garante que não vá para um índice negativo
+            {
+                indiceAtual -= 3;  // Move para o conjunto anterior de 3 espécies
+                AtualizarGraficos();  // Atualiza os gráficos
+            }
+        }
+
+        //dashboard
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        //cultivo
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_estoque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_monitoramento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_saude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_relatorio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BarraPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
         

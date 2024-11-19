@@ -11,7 +11,7 @@ namespace Tela_Cultivo
         private SqlConnection connection;
         private SqlDataAdapter adapter;
         private DataTable cultivoTable;
-
+        private string connectionString;
 
         public telaCultivo()
         {
@@ -20,7 +20,7 @@ namespace Tela_Cultivo
             LoadCultivoData();
             ConfigureDataGridView();
 
-       
+
         }
 
 
@@ -28,7 +28,7 @@ namespace Tela_Cultivo
         private void InitializeDatabaseConnection()
         {
             string nomeBanco = "fazenda_urbana_Urban_Green_pim4"; // Nome do banco de dados
-            string connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
+            connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
 
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -191,10 +191,9 @@ namespace Tela_Cultivo
 
             // Forçar atualização do DataGridView e iniciar edição na primeira célula
             tabelaCultivo.CurrentCell = tabelaCultivo.Rows[tabelaCultivo.Rows.Count - 1].Cells[1];
-            tabelaCultivo.BeginEdit(true); // Inicia a edição da célula
 
-            // Marcar que estamos editando uma nova linha
-            isEditingRow = true;
+
+
         }
 
         private void tabelaCultivo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -272,14 +271,14 @@ namespace Tela_Cultivo
         }
 
 
- 
+
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-            // Validar se o DataTable possui linhas para serem salvas
+            // Validar se o DataTable possui alterações
             if (cultivoTable.GetChanges() != null)
             {
-                // Remove as linhas vazias ou inválidas antes de salvar
+                // Verificar as linhas antes de salvar
                 foreach (DataRow linha in cultivoTable.Rows)
                 {
                     if (linha.RowState == DataRowState.Added || linha.RowState == DataRowState.Modified)
@@ -287,23 +286,32 @@ namespace Tela_Cultivo
                         if (!ValidarLinhaPreenchida(linha))
                         {
                             MessageBox.Show("Por favor, preencha todos os campos obrigatórios.");
-                            return;
+                            return; // Interrompe se a linha não passar na validação
                         }
                     }
                 }
 
-                using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
                     {
                         connection.Open();
-                        adapter.Update(cultivoTable);
-                        MessageBox.Show("Dados salvos com sucesso!");
-                        LoadCultivoData(); // Recarregar os dados após salvar
+
+                        // Atualiza os dados na tabela de pragas/doenças usando o DataAdapter
+                        adapter.Update(cultivoTable); // Insere ou atualiza as linhas alteradas no banco
+
+                        MessageBox.Show("Dados de cultivo salvo");
+
+                        // Confirmar as alterações no DataTable
+                        cultivoTable.AcceptChanges();
+
+                        tabelaCultivo.Refresh(); // Atualizar exibição no DataGridView
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Erro ao salvar dados: " + ex.Message);
+                        Console.WriteLine("Erro ao salvar os dados: " + ex.Message);
                     }
                 }
             }
@@ -313,5 +321,40 @@ namespace Tela_Cultivo
             }
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // DASHBOAR
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_monitoramento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_estoque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_saude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_relatorio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BarraPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

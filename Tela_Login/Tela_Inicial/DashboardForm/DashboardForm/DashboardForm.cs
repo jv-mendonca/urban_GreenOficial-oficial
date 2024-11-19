@@ -257,11 +257,11 @@ namespace DashboardForm
 
             switch (saude)
             {
-                case "Saudável":
+                case "Saudavel":
                     txtSaude.ForeColor = Color.Green;
                     caminhoImagem = Path.Combine(basePath, "folha-verde.png");
                     break;
-                case "Intermediário":
+                case "Intermediario":
                     txtSaude.ForeColor = Color.Orange;
                     caminhoImagem = Path.Combine(basePath, "folha_amarela.png");
                     break;
@@ -436,7 +436,14 @@ namespace DashboardForm
             }
         }
 
+        private void tela_saida_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BarraPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

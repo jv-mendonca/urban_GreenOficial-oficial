@@ -271,6 +271,7 @@
             BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BarraPesquisa.Size = new Size(312, 36);
             BarraPesquisa.TabIndex = 0;
+            BarraPesquisa.TextChanged += BarraPesquisa_TextChanged;
             // 
             // pictureBox8
             // 
@@ -519,7 +520,7 @@
             button4.TabIndex = 16;
             button4.Text = "Dashboard";
             button4.UseVisualStyleBackColor = false;
-            
+            button4.Click += button4_Click;
             // 
             // pictureBox3
             // 
@@ -552,6 +553,7 @@
             btn_relatorio.Size = new Size(144, 35);
             btn_relatorio.TabIndex = 32;
             btn_relatorio.UseVisualStyleBackColor = true;
+            btn_relatorio.Click += btn_relatorio_Click;
             // 
             // pictureBox16
             // 
@@ -573,6 +575,7 @@
             btn_monitoramento.Size = new Size(144, 35);
             btn_monitoramento.TabIndex = 31;
             btn_monitoramento.UseVisualStyleBackColor = false;
+            btn_monitoramento.Click += btn_monitoramento_Click;
             // 
             // label34
             // 
@@ -620,6 +623,7 @@
             btn_saude.Size = new Size(144, 35);
             btn_saude.TabIndex = 30;
             btn_saude.UseVisualStyleBackColor = true;
+            btn_saude.Click += btn_saude_Click;
             // 
             // guna2Separator1
             // 
@@ -669,7 +673,7 @@
             btn_estoque.Size = new Size(144, 35);
             btn_estoque.TabIndex = 28;
             btn_estoque.UseVisualStyleBackColor = true;
-
+            btn_estoque.Click += btn_estoque_Click;
             // 
             // pictureBox21
             // 

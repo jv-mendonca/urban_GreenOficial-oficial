@@ -76,3 +76,4 @@ C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban
 C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban_GreenOficial-Oficial\urban_GreenOficial-main\Tela_Login\obj\Debug\net8.0-windows10.0.26100.0\Tela_Login.pdb
 C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban_GreenOficial-Oficial\urban_GreenOficial-main\Tela_Login\obj\Debug\net8.0-windows10.0.26100.0\Tela_Login.genruntimeconfig.cache
 C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban_GreenOficial-Oficial\urban_GreenOficial-main\Tela_Login\obj\Debug\net8.0-windows10.0.26100.0\ref\Tela_Login.dll
+C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban_GreenOficial-Oficial\urban_GreenOficial-main\Tela_Login\obj\Debug\net8.0-windows10.0.26100.0\Tela_Login.sourcelink.json

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel26 = new Panel();
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
@@ -56,9 +56,7 @@
             pictureBox14 = new PictureBox();
             button2 = new Button();
             label33 = new Label();
-            panel40 = new Panel();
             label38 = new Label();
-            pictureBox13 = new PictureBox();
             btn_estoque = new Button();
             panel39 = new Panel();
             label37 = new Label();
@@ -136,6 +134,8 @@
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pictureBox15 = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            tela_saida = new Button();
+            pictureBox13 = new PictureBox();
             panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
@@ -147,8 +147,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel41.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
-            panel40.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             panel39.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             panel38.SuspendLayout();
@@ -186,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             SuspendLayout();
             // 
             // panel26
@@ -210,7 +209,7 @@
             // BarraPesquisa
             // 
             BarraPesquisa.BorderRadius = 4;
-            BarraPesquisa.CustomizableEdges = customizableEdges5;
+            BarraPesquisa.CustomizableEdges = customizableEdges1;
             BarraPesquisa.DefaultText = "";
             BarraPesquisa.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             BarraPesquisa.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -224,13 +223,17 @@
             BarraPesquisa.PasswordChar = '\0';
             BarraPesquisa.PlaceholderText = "Pesquisar Produto";
             BarraPesquisa.SelectedText = "";
-            BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges2;
             BarraPesquisa.Size = new Size(312, 36);
             BarraPesquisa.TabIndex = 0;
+            BarraPesquisa.TextChanged += BarraPesquisa_TextChanged;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(pictureBox13);
+            panel2.Controls.Add(label38);
+            panel2.Controls.Add(tela_saida);
             panel2.Controls.Add(label35);
             panel2.Controls.Add(label32);
             panel2.Controls.Add(pictureBox10);
@@ -248,7 +251,6 @@
             panel2.Controls.Add(panel41);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(label33);
-            panel2.Controls.Add(panel40);
             panel2.Controls.Add(btn_estoque);
             panel2.Controls.Add(panel39);
             panel2.Controls.Add(panel38);
@@ -354,7 +356,6 @@
             button4.TabIndex = 15;
             button4.Text = "Dashboard";
             button4.UseVisualStyleBackColor = false;
-            
             // 
             // label34
             // 
@@ -483,39 +484,17 @@
             label33.TabIndex = 6;
             label33.Text = "Estoque";
             // 
-            // panel40
-            // 
-            panel40.BackColor = Color.Transparent;
-            panel40.Controls.Add(label38);
-            panel40.Controls.Add(pictureBox13);
-            panel40.Location = new Point(12, 432);
-            panel40.Name = "panel40";
-            panel40.Size = new Size(147, 35);
-            panel40.TabIndex = 12;
-            // 
             // label38
             // 
             label38.AutoSize = true;
             label38.Cursor = Cursors.Hand;
             label38.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label38.ForeColor = Color.Gray;
-            label38.Location = new Point(33, 8);
+            label38.Location = new Point(45, 440);
             label38.Name = "label38";
             label38.Size = new Size(35, 19);
             label38.TabIndex = 6;
             label38.Text = "Sair";
-            // 
-            // pictureBox13
-            // 
-            pictureBox13.BackColor = Color.Transparent;
-            pictureBox13.Cursor = Cursors.Hand;
-            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(7, 7);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(20, 20);
-            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox13.TabIndex = 6;
-            pictureBox13.TabStop = false;
             // 
             // btn_estoque
             // 
@@ -1224,14 +1203,14 @@
             Cabecalho.Controls.Add(panel1);
             Cabecalho.Controls.Add(panel26);
             Cabecalho.Controls.Add(BarraPesquisa);
-            customizableEdges7.BottomRight = false;
-            customizableEdges7.TopLeft = false;
-            Cabecalho.CustomizableEdges = customizableEdges7;
+            customizableEdges3.BottomRight = false;
+            customizableEdges3.TopLeft = false;
+            Cabecalho.CustomizableEdges = customizableEdges3;
             Cabecalho.FillColor = Color.FromArgb(192, 255, 192);
             Cabecalho.FillColor2 = Color.Green;
             Cabecalho.Location = new Point(-8, 0);
             Cabecalho.Name = "Cabecalho";
-            Cabecalho.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            Cabecalho.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Cabecalho.Size = new Size(1280, 68);
             Cabecalho.TabIndex = 5;
             // 
@@ -1310,6 +1289,27 @@
             pictureBox15.TabIndex = 6;
             pictureBox15.TabStop = false;
             // 
+            // tela_saida
+            // 
+            tela_saida.Location = new Point(12, 432);
+            tela_saida.Name = "tela_saida";
+            tela_saida.Size = new Size(144, 35);
+            tela_saida.TabIndex = 18;
+            tela_saida.UseVisualStyleBackColor = true;
+            tela_saida.Click += tela_saida_Click;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackColor = Color.Transparent;
+            pictureBox13.Cursor = Cursors.Hand;
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(19, 439);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(20, 20);
+            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox13.TabIndex = 19;
+            pictureBox13.TabStop = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1339,9 +1339,6 @@
             panel41.ResumeLayout(false);
             panel41.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
-            panel40.ResumeLayout(false);
-            panel40.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             panel39.ResumeLayout(false);
             panel39.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -1402,6 +1399,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ResumeLayout(false);
         }
 
@@ -1485,9 +1483,7 @@
         private Panel panel41;
         private Label label39;
         private PictureBox pictureBox14;
-        private Panel panel40;
         private Label label38;
-        private PictureBox pictureBox13;
         private Panel panel39;
         private Label label37;
         private PictureBox pictureBox12;
@@ -1510,5 +1506,7 @@
         private PictureBox pictureBox11;
         private Button button2;
         private Button button4;
+        private PictureBox pictureBox13;
+        private Button tela_saida;
     }
 }
