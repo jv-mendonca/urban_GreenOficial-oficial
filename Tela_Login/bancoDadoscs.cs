@@ -85,7 +85,7 @@ namespace tela_de_logins
         {
             // Verificar se o banco de dados existe antes de tentar criar as tabelas
             //tring de conexão
-string connectionString = $"Server=mendonca\\SQL;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
+string connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
 
             //Verificação da existência do banco de dados
 string checkDbQuery = $@"

@@ -20,17 +20,18 @@ namespace DashboardForm
         private int currentIndex = 0;
         private EstoqueForm estoqueForm; // Variável para armazenar a instância do EstoqueForm
         private List<Monitoramento> monitoramentos = new List<Monitoramento>();
-
+                private string primeiroNome;
         public Dashboard(string primeiroNome)
         {
             nomeUsuario = primeiroNome;
             connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
             InitializeComponent();
             ExibirNomeUsuario();
-
+            
             CarregarPlantacao();
             this.AutoScaleMode = AutoScaleMode.Dpi;
             ExibirMonitoramento(currentIndex);
+           
 
 
 
@@ -252,7 +253,7 @@ namespace DashboardForm
             txtSaude.Text = saude;
 
             // Caminho absoluto para as imagens de saúde
-            string basePath = @"C:\UrbanGreenProject\Urban_Green_PROJECT\Tela_Login\Tela_Login\Tela_Inicial\DashboardForm\DashboardForm\Resources";
+            string basePath = @"C:\Users\joaok\OneDrive\cmder\Área de Trabalho\urban_GreenOficial-Oficial\urban_GreenOficial-Oficial\urban_GreenOficial-main\Tela_Login\Tela_Inicial\DashboardForm\DashboardForm\Resources";
             string caminhoImagem = null;
 
             switch (saude)
@@ -269,9 +270,7 @@ namespace DashboardForm
                     txtSaude.ForeColor = Color.Red;
                     caminhoImagem = Path.Combine(basePath, "folha_vermelha.jpg");
                     break;
-                default:
-                    txtSaude.ForeColor = Color.Gray;
-                    break;
+                
             }
 
             if (caminhoImagem != null && File.Exists(caminhoImagem))
@@ -281,12 +280,7 @@ namespace DashboardForm
                 CentralizarImagemNaCaixa();
                 PosicionarSaudeNaParteInferior();
             }
-            else
-            {
-                imagemFolha.Image = null; // Remove a imagem se não houver uma correspondente
-                CentralizarImagemNaCaixa();
-                PosicionarSaudeNaParteInferior();
-            }
+            
 
 
         }
@@ -443,7 +437,105 @@ namespace DashboardForm
 
         private void BarraPesquisa_TextChanged(object sender, EventArgs e)
         {
+            string pesquisa = BarraPesquisa.Text.ToLower(); // Pega o texto da barra e converte para minúsculas para facilitar a comparação
+
+            // Verifica se o texto digitado corresponde a algum comando para abrir uma tela
+            if (pesquisa.Contains("dashboard"))
+            {
+                // Se o texto contém "dashboard", abre a tela Dashboard
+                AbrirTelaDashboard();
+            }
+            else if (pesquisa.Contains("estoque"))
+            {
+                // Se o texto contém "estoque", abre a tela Estoque
+                AbrirTelaEstoque();
+            }
+            else if (pesquisa.Contains("cultivo"))
+            {
+                // Se o texto contém "cultivo", abre a tela Cultivo
+                AbrirTelaCultivo();
+            }
+            else if (pesquisa.Contains("saude"))
+            {
+                // Se o texto contém "saude", abre a tela Saude
+                AbrirTelaSaude();
+            }
 
         }
+
+        private void AbrirTelaDashboard()
+        {
+            // Verifica se o Dashboard já está aberto, senão, cria uma nova instância
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard)
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return;
+                }
+            }
+
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide();
+            dashboardForm.Show();
+        }
+
+        private void AbrirTelaEstoque()
+        {
+            // Verifica se o Estoque já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is EstoqueForm)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide();
+            estoqueForm.Show();
+        }
+
+        private void AbrirTelaCultivo()
+        {
+            // Verifica se o Cultivo já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaCultivo)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaCultivo cultivoForm = new telaCultivo();
+            this.Hide();
+            cultivoForm.Show();
+        }
+
+        private void AbrirTelaSaude()
+        {
+            // Verifica se a tela de Saúde já está aberta
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaSaude)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaSaude saudeForm = new telaSaude();
+            this.Hide();
+            saudeForm.Show();
+        }
     }
+
+
 }
+

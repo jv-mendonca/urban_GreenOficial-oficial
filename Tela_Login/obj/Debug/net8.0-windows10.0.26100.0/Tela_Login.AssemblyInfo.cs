@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tela_Login")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4eab205a1dcca8b1a827948434a354e342e85618")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e15e80ec2c4c34cd2209e4368d951237315fc68")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tela_Login")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tela_Login")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,9 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
 using tela_de_logins;
+using DashboardForm;
+using Tela_Saude2;
+using UrbanGreenProject;
 
 namespace Tela_Cultivo
 {
@@ -12,6 +15,7 @@ namespace Tela_Cultivo
         private SqlDataAdapter adapter;
         private DataTable cultivoTable;
         private string connectionString;
+        private string primeiroNome;
 
         public telaCultivo()
         {
@@ -51,23 +55,24 @@ namespace Tela_Cultivo
                 }
 
                 // Modifique a consulta SQL para incluir a coluna 'status_cultivo'
-                adapter = new SqlDataAdapter("SELECT cod_plantacao, especie, tipo_plantacao, data_plantio, data_prevista, status_cultivo FROM Plantacao", connection);
+                adapter = new SqlDataAdapter("SELECT cod_plantacao, especie, tipo_plantacao, data_plantio, data_prevista, status_cultivo, saude_plantacao FROM Plantacao", connection);
 
                 // Configurar InsertCommand
                 SqlCommand insertCommand = new SqlCommand(
-                    "INSERT INTO Plantacao (cod_plantacao, especie, tipo_plantacao, data_plantio, data_prevista, status_cultivo) " +
-                    "VALUES (@cod_plantacao, @especie, @tipo_plantacao, @data_plantio, @data_prevista, @status_cultivo)", connection);
+                    "INSERT INTO Plantacao (cod_plantacao, especie, tipo_plantacao, data_plantio, data_prevista, status_cultivo, saude_plantacao) " +
+                    "VALUES (@cod_plantacao, @especie, @tipo_plantacao, @data_plantio, @data_prevista, @status_cultivo, @saude_plantacao)", connection);
                 insertCommand.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 insertCommand.Parameters.Add("@especie", SqlDbType.NVarChar, 100, "especie");
                 insertCommand.Parameters.Add("@tipo_plantacao", SqlDbType.NVarChar, 100, "tipo_plantacao");
                 insertCommand.Parameters.Add("@data_plantio", SqlDbType.Date, 0, "data_plantio");
                 insertCommand.Parameters.Add("@data_prevista", SqlDbType.Date, 0, "data_prevista");
                 insertCommand.Parameters.Add("@status_cultivo", SqlDbType.NVarChar, 50, "status_cultivo"); // Adiciona a coluna 'status_cultivo'
+                insertCommand.Parameters.Add("@saude_plantacao", SqlDbType.NVarChar, 100, "saude_plantacao");
                 adapter.InsertCommand = insertCommand;
 
                 // Configurar UpdateCommand
                 SqlCommand updateCommand = new SqlCommand(
-                    "UPDATE Plantacao SET especie = @especie, tipo_plantacao = @tipo_plantacao, data_plantio = @data_plantio, data_prevista = @data_prevista, status_cultivo = @status_cultivo " +
+                    "UPDATE Plantacao SET especie = @especie, tipo_plantacao = @tipo_plantacao, data_plantio = @data_plantio, data_prevista = @data_prevista, status_cultivo = @status_cultivo, saude_plantacao = @saude_plantacao " +
                     "WHERE cod_plantacao = @cod_plantacao", connection);
                 updateCommand.Parameters.Add("@especie", SqlDbType.NVarChar, 100, "especie");
                 updateCommand.Parameters.Add("@tipo_plantacao", SqlDbType.NVarChar, 100, "tipo_plantacao");
@@ -75,6 +80,7 @@ namespace Tela_Cultivo
                 updateCommand.Parameters.Add("@data_prevista", SqlDbType.Date, 0, "data_prevista");
                 updateCommand.Parameters.Add("@status_cultivo", SqlDbType.NVarChar, 50, "status_cultivo"); // Adiciona a coluna 'status_cultivo'
                 updateCommand.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
+                updateCommand.Parameters.Add("@saude_plantacao", SqlDbType.NVarChar, 100, "saude_plantacao");
                 adapter.UpdateCommand = updateCommand;
 
                 // Configurar DeleteCommand
@@ -154,6 +160,25 @@ namespace Tela_Cultivo
                 DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
             });
 
+            DataGridViewComboBoxColumn saudeColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "saude_plantacao", // Nome da propriedade no DataTable
+                HeaderText = "Saúde da Plantação",
+                DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
+                DataSource = new List<string> { "Saudavel", "Intermediario", "Perigo" }, // Valores fixos
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
+
+
+
+
+
+
+            };
+            tabelaCultivo.Columns.Add(saudeColumn);
+
             // Configurando as propriedades dos cabeçalhos das colunas (titulos)
             foreach (DataGridViewColumn column in tabelaCultivo.Columns)
             {
@@ -185,6 +210,7 @@ namespace Tela_Cultivo
             newRow["status_cultivo"] = "";
             newRow["data_plantio"] = DBNull.Value;
             newRow["data_prevista"] = DBNull.Value;
+            newRow["saude_plantacao"] = "";
 
             cultivoTable.Rows.Add(newRow);
             tabelaCultivo.Refresh();
@@ -329,7 +355,21 @@ namespace Tela_Cultivo
         // DASHBOAR
         private void button4_Click(object sender, EventArgs e)
         {
+            // Verifica se o formulário já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard) // Se o formulário Dashboard já estiver aberto
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return; // Sai do método sem criar uma nova instância
+                }
+            }
 
+            // Se o formulário não estiver aberto, cria uma nova instância
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide(); // Oculta o formulário atual
+            dashboardForm.Show(); // Exibe o novo formulário
         }
 
         private void btn_monitoramento_Click(object sender, EventArgs e)
@@ -339,12 +379,16 @@ namespace Tela_Cultivo
 
         private void btn_estoque_Click(object sender, EventArgs e)
         {
-
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide(); // Opcional: oculta o formulário atual
+            estoqueForm.Show();
         }
 
         private void btn_saude_Click(object sender, EventArgs e)
         {
-
+            telaSaude telassa = new telaSaude();
+            this.Hide();
+            telassa.Show();
         }
 
         private void btn_relatorio_Click(object sender, EventArgs e)
@@ -354,7 +398,102 @@ namespace Tela_Cultivo
 
         private void BarraPesquisa_TextChanged(object sender, EventArgs e)
         {
+            string pesquisa = BarraPesquisa.Text.ToLower(); // Pega o texto da barra e converte para minúsculas para facilitar a comparação
 
+            // Verifica se o texto digitado corresponde a algum comando para abrir uma tela
+            if (pesquisa.Contains("dashboard"))
+            {
+                // Se o texto contém "dashboard", abre a tela Dashboard
+                AbrirTelaDashboard();
+            }
+            else if (pesquisa.Contains("estoque"))
+            {
+                // Se o texto contém "estoque", abre a tela Estoque
+                AbrirTelaEstoque();
+            }
+            else if (pesquisa.Contains("cultivo"))
+            {
+                // Se o texto contém "cultivo", abre a tela Cultivo
+                AbrirTelaCultivo();
+            }
+            else if (pesquisa.Contains("saude"))
+            {
+                // Se o texto contém "saude", abre a tela Saude
+                AbrirTelaSaude();
+            }
+
+        }
+
+        private void AbrirTelaDashboard()
+        {
+            // Verifica se o Dashboard já está aberto, senão, cria uma nova instância
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard)
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return;
+                }
+            }
+
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide();
+            dashboardForm.Show();
+        }
+
+        private void AbrirTelaEstoque()
+        {
+            // Verifica se o Estoque já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is EstoqueForm)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide();
+            estoqueForm.Show();
+        }
+
+        private void AbrirTelaCultivo()
+        {
+            // Verifica se o Cultivo já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaCultivo)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaCultivo cultivoForm = new telaCultivo();
+            this.Hide();
+            cultivoForm.Show();
+        }
+
+        private void AbrirTelaSaude()
+        {
+            // Verifica se a tela de Saúde já está aberta
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaSaude)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaSaude saudeForm = new telaSaude();
+            this.Hide();
+            saudeForm.Show();
         }
     }
 }

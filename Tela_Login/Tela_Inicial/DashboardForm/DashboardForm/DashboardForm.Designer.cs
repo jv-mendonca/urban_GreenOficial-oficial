@@ -37,6 +37,9 @@
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             panel2 = new Panel();
+            pictureBox13 = new PictureBox();
+            label38 = new Label();
+            tela_saida = new Button();
             label35 = new Label();
             label32 = new Label();
             pictureBox10 = new PictureBox();
@@ -56,7 +59,6 @@
             pictureBox14 = new PictureBox();
             button2 = new Button();
             label33 = new Label();
-            label38 = new Label();
             btn_estoque = new Button();
             panel39 = new Panel();
             label37 = new Label();
@@ -134,11 +136,10 @@
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pictureBox15 = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            tela_saida = new Button();
-            pictureBox13 = new PictureBox();
             panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
@@ -184,7 +185,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             SuspendLayout();
             // 
             // panel26
@@ -261,6 +261,39 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(169, 615);
             panel2.TabIndex = 1;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackColor = Color.Transparent;
+            pictureBox13.Cursor = Cursors.Hand;
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(19, 439);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(20, 20);
+            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox13.TabIndex = 19;
+            pictureBox13.TabStop = false;
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Cursor = Cursors.Hand;
+            label38.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label38.ForeColor = Color.Gray;
+            label38.Location = new Point(45, 440);
+            label38.Name = "label38";
+            label38.Size = new Size(35, 19);
+            label38.TabIndex = 6;
+            label38.Text = "Sair";
+            // 
+            // tela_saida
+            // 
+            tela_saida.Location = new Point(12, 432);
+            tela_saida.Name = "tela_saida";
+            tela_saida.Size = new Size(144, 35);
+            tela_saida.TabIndex = 18;
+            tela_saida.UseVisualStyleBackColor = true;
+            tela_saida.Click += tela_saida_Click;
             // 
             // label35
             // 
@@ -483,18 +516,6 @@
             label33.Size = new Size(61, 19);
             label33.TabIndex = 6;
             label33.Text = "Estoque";
-            // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.Cursor = Cursors.Hand;
-            label38.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label38.ForeColor = Color.Gray;
-            label38.Location = new Point(45, 440);
-            label38.Name = "label38";
-            label38.Size = new Size(35, 19);
-            label38.TabIndex = 6;
-            label38.Text = "Sair";
             // 
             // btn_estoque
             // 
@@ -1235,6 +1256,7 @@
             labelPrimeiroNome.Size = new Size(75, 20);
             labelPrimeiroNome.TabIndex = 7;
             labelPrimeiroNome.Text = "Fernando";
+            
             // 
             // pictureBox18
             // 
@@ -1289,27 +1311,6 @@
             pictureBox15.TabIndex = 6;
             pictureBox15.TabStop = false;
             // 
-            // tela_saida
-            // 
-            tela_saida.Location = new Point(12, 432);
-            tela_saida.Name = "tela_saida";
-            tela_saida.Size = new Size(144, 35);
-            tela_saida.TabIndex = 18;
-            tela_saida.UseVisualStyleBackColor = true;
-            tela_saida.Click += tela_saida_Click;
-            // 
-            // pictureBox13
-            // 
-            pictureBox13.BackColor = Color.Transparent;
-            pictureBox13.Cursor = Cursors.Hand;
-            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(19, 439);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(20, 20);
-            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox13.TabIndex = 19;
-            pictureBox13.TabStop = false;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1330,6 +1331,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -1399,7 +1401,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ResumeLayout(false);
         }
 

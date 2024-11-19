@@ -1,3 +1,4 @@
+using DashboardForm;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Tela_Cultivo;
+using UrbanGreenProject;
 using static DashboardForm.Dashboard;
 
 namespace Tela_Saude2
@@ -18,6 +20,7 @@ namespace Tela_Saude2
         private string connectionString;
         private int indiceAtual = 0;  // Armazena o índice da espécie atual a ser exibida
         private List<string> especies = new List<string>(); // Lista de espécies para navegação
+        private string primeiroNome;
 
 
 
@@ -60,39 +63,42 @@ namespace Tela_Saude2
 
 
                 adapter = new SqlDataAdapter(
-            @"SELECT 
-                p.cod_plantacao,         -- Código da plantação
-                p.tipo_plantacao,        -- Tipo de plantação
-                pd.cod_pragas_doencas,   -- Código das pragas/doenças
-                pd.nome_comum,           -- Nome comum da praga/doença
-                pd.nome_cientifico,      -- Nome científico da praga/doença
-                pd.tipo,                 -- Tipo da praga/doença
-                pd.data_deteccao,        -- Data de detecção
-                pd.eficacia,             -- Eficácia do controle
-                pd.severidade,           -- Severidade
-                pd.metodo_controle       -- Método de controle usado
-            FROM 
-                Plantacao p
-            LEFT JOIN 
-                Controle_pragas_doencas pd ON p.cod_plantacao = pd.cod_plantacao
-            WHERE 
-                p.cod_plantacao IS NOT NULL
-                AND pd.nome_comum IS NOT NULL
-                AND pd.nome_cientifico IS NOT NULL
-                AND pd.tipo IS NOT NULL
-                AND pd.data_deteccao IS NOT NULL
-                AND pd.eficacia IS NOT NULL
-                AND pd.severidade IS NOT NULL
-                AND pd.metodo_controle IS NOT NULL", connection);
+@"SELECT 
+    p.cod_plantacao,         -- Código da plantação
+    p.tipo_plantacao,        -- Tipo de plantação
+    p.saude_plantacao,       -- Saúde da plantação
+    pd.cod_pragas_doencas,   -- Código das pragas/doenças
+    pd.nome_comum,           -- Nome comum da praga/doença
+    pd.nome_cientifico,      -- Nome científico da praga/doença
+    pd.tipo,                 -- Tipo da praga/doença
+    pd.data_deteccao,        -- Data de detecção
+    pd.eficacia,             -- Eficácia do controle
+    pd.severidade,           -- Severidade
+    pd.metodo_controle       -- Método de controle usado
+FROM 
+    Plantacao p
+LEFT JOIN 
+    Controle_pragas_doencas pd ON p.cod_plantacao = pd.cod_plantacao
+WHERE 
+    p.cod_plantacao IS NOT NULL
+    AND pd.nome_comum IS NOT NULL
+    AND pd.nome_cientifico IS NOT NULL
+    AND pd.tipo IS NOT NULL
+    AND pd.data_deteccao IS NOT NULL
+    AND pd.eficacia IS NOT NULL
+    AND pd.severidade IS NOT NULL
+    AND pd.metodo_controle IS NOT NULL", connection);
+
 
 
 
                 SqlCommand insertSaude = new SqlCommand(
-                    "insert into Controle_pragas_doencas (cod_pragas_doencas, cod_plantacao, nome_comum,nome_cientifico,tipo, data_deteccao,eficacia, severidade,metodo_controle) " +
-                    "Values (@cod_pragas_doencas,@cod_plantacao, @nome_comum, @nome_cientifico, @tipo, @data_deteccao, @eficacia, @severidade, @metodo_controle)", connection);
+     "INSERT INTO Controle_pragas_doencas (cod_pragas_doencas, cod_plantacao, nome_comum, nome_cientifico, tipo, data_deteccao, eficacia, severidade, metodo_controle) " +
+     "VALUES (@cod_pragas_doencas, @cod_plantacao, @nome_comum, @nome_cientifico, @tipo, @data_deteccao, @eficacia, @severidade, @metodo_controle)", connection);
 
+                // Adicione parâmetros como necessário
+                insertSaude.Parameters.Add("@saude_plantacao", SqlDbType.VarChar, 100, "saude_plantacao");
 
-                // Adicionando os parâmetros ao comando
                 insertSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int, 0, "cod_pragas_doencas");
                 insertSaude.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 insertSaude.Parameters.Add("@nome_comum", SqlDbType.VarChar, 100, "nome_comum");
@@ -107,16 +113,20 @@ namespace Tela_Saude2
 
 
                 SqlCommand updateSaude = new SqlCommand(
-                    "UPDATE Controle_pragas_doencas " +
-                    "SET cod_plantacao = @cod_plantacao, " +
-                    "    nome_comum = @nome_comum, " +
-                    "    nome_cientifico = @nome_cientifico, " +
-                    "    tipo = @tipo, " +
-                    "    data_deteccao = @data_deteccao, " +
-                    "    eficacia = @eficacia, " +
-                    "    severidade = @severidade, " +
-                    "    metodo_controle = @metodo_controle " +
-                    "WHERE cod_pragas_doencas = @cod_pragas_doencas", connection);
+    "UPDATE Controle_pragas_doencas " +
+    "SET cod_plantacao = @cod_plantacao, " +
+    "    nome_comum = @nome_comum, " +
+    "    nome_cientifico = @nome_cientifico, " +
+    "    tipo = @tipo, " +
+    "    data_deteccao = @data_deteccao, " +
+    "    eficacia = @eficacia, " +
+    "    severidade = @severidade, " +
+    "    metodo_controle = @metodo_controle, " +
+    "    saude_plantacao = @saude_plantacao " + // Inclua a saúde da plantação
+    "WHERE cod_pragas_doencas = @cod_pragas_doencas", connection);
+
+                // Adicione parâmetros como necessário
+                updateSaude.Parameters.Add("@saude_plantacao", SqlDbType.VarChar, 100, "saude_plantacao");
 
                 // Adicionando os parâmetros ao comando
                 updateSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int, 0, "cod_pragas_doencas");
@@ -138,6 +148,11 @@ namespace Tela_Saude2
                 // Adicionando o parâmetro ao comando
                 deleteSaude.Parameters.Add("@cod_pragas_doencas", SqlDbType.Int);
                 adapter.DeleteCommand = deleteSaude;
+
+
+   
+
+
 
                 saudeTable = new DataTable();
                 adapter.Fill(saudeTable);
@@ -260,6 +275,10 @@ namespace Tela_Saude2
                     Alignment = DataGridViewContentAlignment.MiddleCenter,
                 }
             });
+
+            
+            
+
 
 
             // Configurando as propriedades dos cabeçalhos das colunas (titulos)
@@ -614,17 +633,35 @@ namespace Tela_Saude2
         //dashboard
         private void button4_Click(object sender, EventArgs e)
         {
+            // Verifica se o formulário já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard) // Se o formulário Dashboard já estiver aberto
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return; // Sai do método sem criar uma nova instância
+                }
+            }
 
+            // Se o formulário não estiver aberto, cria uma nova instância
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide(); // Oculta o formulário atual
+            dashboardForm.Show(); // Exibe o novo formulário
         }
         //cultivo
         private void button2_Click(object sender, EventArgs e)
         {
-
+            telaCultivo cultivoForm = new telaCultivo();
+            this.Hide();
+            cultivoForm.Show();
         }
 
         private void btn_estoque_Click(object sender, EventArgs e)
         {
-
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide(); // Opcional: oculta o formulário atual
+            estoqueForm.Show();
         }
 
         private void btn_monitoramento_Click(object sender, EventArgs e)
@@ -634,7 +671,9 @@ namespace Tela_Saude2
 
         private void btn_saude_Click(object sender, EventArgs e)
         {
-
+            telaSaude saudeForm = new telaSaude();
+            this.Hide();
+            saudeForm.Show();
         }
 
         private void btn_relatorio_Click(object sender, EventArgs e)
@@ -644,7 +683,102 @@ namespace Tela_Saude2
 
         private void BarraPesquisa_TextChanged(object sender, EventArgs e)
         {
+            string pesquisa = BarraPesquisa.Text.ToLower(); // Pega o texto da barra e converte para minúsculas para facilitar a comparação
 
+            // Verifica se o texto digitado corresponde a algum comando para abrir uma tela
+            if (pesquisa.Contains("dashboard"))
+            {
+                // Se o texto contém "dashboard", abre a tela Dashboard
+                AbrirTelaDashboard();
+            }
+            else if (pesquisa.Contains("estoque"))
+            {
+                // Se o texto contém "estoque", abre a tela Estoque
+                AbrirTelaEstoque();
+            }
+            else if (pesquisa.Contains("cultivo"))
+            {
+                // Se o texto contém "cultivo", abre a tela Cultivo
+                AbrirTelaCultivo();
+            }
+            else if (pesquisa.Contains("saude"))
+            {
+                // Se o texto contém "saude", abre a tela Saude
+                AbrirTelaSaude();
+            }
+
+        }
+
+        private void AbrirTelaDashboard()
+        {
+            // Verifica se o Dashboard já está aberto, senão, cria uma nova instância
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard)
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return;
+                }
+            }
+
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide();
+            dashboardForm.Show();
+        }
+
+        private void AbrirTelaEstoque()
+        {
+            // Verifica se o Estoque já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is EstoqueForm)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide();
+            estoqueForm.Show();
+        }
+
+        private void AbrirTelaCultivo()
+        {
+            // Verifica se o Cultivo já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaCultivo)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaCultivo cultivoForm = new telaCultivo();
+            this.Hide();
+            cultivoForm.Show();
+        }
+
+        private void AbrirTelaSaude()
+        {
+            // Verifica se a tela de Saúde já está aberta
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaSaude)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaSaude saudeForm = new telaSaude();
+            this.Hide();
+            saudeForm.Show();
         }
     }
 }

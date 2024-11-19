@@ -14,6 +14,7 @@ namespace UrbanGreenProject
         private SqlDataAdapter adapter;
         private DataTable estoqueTable;
         private string connectionString;
+        private string primeiroNome;
 
 
         public EstoqueForm()
@@ -533,7 +534,21 @@ namespace UrbanGreenProject
         //dashboard
         private void button4_Click(object sender, EventArgs e)
         {
+            // Verifica se o formulário já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard) // Se o formulário Dashboard já estiver aberto
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return; // Sai do método sem criar uma nova instância
+                }
+            }
 
+            // Se o formulário não estiver aberto, cria uma nova instância
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide(); // Oculta o formulário atual
+            dashboardForm.Show(); // Exibe o novo formulário
         }
 
         private void btn_monitoramento_Click(object sender, EventArgs e)
@@ -548,7 +563,9 @@ namespace UrbanGreenProject
 
         private void btn_saude_Click(object sender, EventArgs e)
         {
-
+            telaSaude telassa = new telaSaude();
+            this.Hide();
+            telassa.Show();
         }
 
         private void btn_relatorio_Click(object sender, EventArgs e)
@@ -558,7 +575,102 @@ namespace UrbanGreenProject
 
         private void BarraPesquisa_TextChanged(object sender, EventArgs e)
         {
+            string pesquisa = BarraPesquisa.Text.ToLower(); // Pega o texto da barra e converte para minúsculas para facilitar a comparação
 
+            // Verifica se o texto digitado corresponde a algum comando para abrir uma tela
+            if (pesquisa.Contains("dashboard"))
+            {
+                // Se o texto contém "dashboard", abre a tela Dashboard
+                AbrirTelaDashboard();
+            }
+            else if (pesquisa.Contains("estoque"))
+            {
+                // Se o texto contém "estoque", abre a tela Estoque
+                AbrirTelaEstoque();
+            }
+            else if (pesquisa.Contains("cultivo"))
+            {
+                // Se o texto contém "cultivo", abre a tela Cultivo
+                AbrirTelaCultivo();
+            }
+            else if (pesquisa.Contains("saude"))
+            {
+                // Se o texto contém "saude", abre a tela Saude
+                AbrirTelaSaude();
+            }
+
+        }
+
+        private void AbrirTelaDashboard()
+        {
+            // Verifica se o Dashboard já está aberto, senão, cria uma nova instância
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is Dashboard)
+                {
+                    f.Show(); // Exibe o formulário
+                    this.Hide(); // Oculta o formulário atual
+                    return;
+                }
+            }
+
+            Dashboard dashboardForm = new Dashboard(primeiroNome);
+            this.Hide();
+            dashboardForm.Show();
+        }
+
+        private void AbrirTelaEstoque()
+        {
+            // Verifica se o Estoque já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is EstoqueForm)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            EstoqueForm estoqueForm = new EstoqueForm();
+            this.Hide();
+            estoqueForm.Show();
+        }
+
+        private void AbrirTelaCultivo()
+        {
+            // Verifica se o Cultivo já está aberto
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaCultivo)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaCultivo cultivoForm = new telaCultivo();
+            this.Hide();
+            cultivoForm.Show();
+        }
+
+        private void AbrirTelaSaude()
+        {
+            // Verifica se a tela de Saúde já está aberta
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is telaSaude)
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            telaSaude saudeForm = new telaSaude();
+            this.Hide();
+            saudeForm.Show();
         }
     }
 }
