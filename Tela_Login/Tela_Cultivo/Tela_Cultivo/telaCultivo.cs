@@ -104,7 +104,7 @@ namespace Tela_Cultivo
 
 
 
-        private void ConfigureDataGridView()
+      private void ConfigureDataGridView()
         {
             // Configurar o DataGridView
             tabelaCultivo.DataSource = cultivoTable;
@@ -172,10 +172,6 @@ namespace Tela_Cultivo
                 }
 
 
-
-
-
-
             };
             tabelaCultivo.Columns.Add(saudeColumn);
 
@@ -187,8 +183,6 @@ namespace Tela_Cultivo
                 column.HeaderCell.Style.BackColor = Color.FromArgb(37, 213, 116); // Cor de fundo verde para os cabeçalhos
             }
         }
-
-
 
 
         private bool isEditingRow = false; // Flag para saber se há uma linha em edição

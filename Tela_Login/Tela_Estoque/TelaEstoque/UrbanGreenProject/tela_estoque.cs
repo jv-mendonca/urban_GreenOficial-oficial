@@ -169,106 +169,149 @@ namespace UrbanGreenProject
 
         }
 
-        private void ConfigureDataGridView()
-        {
-            tabela_Estoque.DataSource = estoqueTable;
+private void ConfigureDataGridView()
+{
+    tabela_Estoque.DataSource = estoqueTable;
 
-            tabela_Estoque.AutoGenerateColumns = false;
-            tabela_Estoque.Columns.Clear();
+    tabela_Estoque.AutoGenerateColumns = false;
+    tabela_Estoque.Columns.Clear();
 
-            // Código Colheita (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "cod_colheita",
-                HeaderText = "Código Colheita",
-                ReadOnly = true,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Código Colheita (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "cod_colheita",
+        HeaderText = "ID Colheita",
+        ReadOnly = true,
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Tipo de Plantação (ComboBox)
-            DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn
-            {
-                Name = "tipo_plantacao",
-                HeaderText = "Tipo de Plantação",
-                DataPropertyName = "cod_plantacao", // Vinculado ao valor interno no DataTable
-                DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            };
-            tabela_Estoque.Columns.Add(comboColumn);
+    // Tipo de Plantação (ComboBox)
+    DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn
+    {
+        Name = "tipo_plantacao",
+        HeaderText = "Plantação",
+        DataPropertyName = "cod_plantacao",
+        DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    };
+    tabela_Estoque.Columns.Add(comboColumn);
 
-            // Data Colhida (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "data_colhida",
-                HeaderText = "Data Colhida",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "dd/MM/yyyy" }
-            });
+    // Data Colhida (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "data_colhida",
+        HeaderText = "Data Colhida",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "dd/MM/yyyy" }
+    });
 
-            // Quantidade Colhida (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "quantidade_colhida",
-                HeaderText = "Quantidade Colhida",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Quantidade Colhida (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "quantidade_colhida",
+        HeaderText = "Quantidade Colhida",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Código Estoque (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "cod_estoque",
-                HeaderText = "Código Estoque",
-                ReadOnly = true,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Código Estoque (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "cod_estoque",
+        HeaderText = "ID Estoque",
+        ReadOnly = true,
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Data Entrada (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "data_entrada",
-                HeaderText = "Data Entrada",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "dd/MM/yyyy" }
-            });
+    // Data Entrada (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "data_entrada",
+        HeaderText = "Data Entrada",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "dd/MM/yyyy" }
+    });
 
-            // Nome Produto (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "nome_produto",
-                HeaderText = "Nome Produto",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Nome Produto (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "nome_produto",
+        HeaderText = "Produto",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Quantidade Estoque (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "quantidade",
-                HeaderText = "Quantidade em Estoque",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Quantidade Estoque (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "quantidade",
+        HeaderText = "Quantidade Estoque",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Unidade Medida (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "unidade_medida",
-                HeaderText = "Unidade de Medida",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Unidade Medida (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "unidade_medida",
+        HeaderText = "Medida",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
-            // Lote (Texto)
-            tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "lote",
-                HeaderText = "Lote",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+    // Lote (Texto)
+    tabela_Estoque.Columns.Add(new DataGridViewTextBoxColumn
+    {
+        DataPropertyName = "lote",
+        HeaderText = "Lote",
+        DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+    });
 
             // Estilo do cabeçalho
             foreach (DataGridViewColumn column in tabela_Estoque.Columns)
             {
-                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                column.HeaderCell.Style.ForeColor = Color.White; // Cor branca para o título
-                column.HeaderCell.Style.BackColor = Color.FromArgb(37, 213, 116); // Cor de fundo verde para os cabeçalhos
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Alinhamento centralizado
+                column.HeaderCell.Style.ForeColor = Color.White; // Cor branca para o texto
+                column.HeaderCell.Style.BackColor = Color.FromArgb(37, 213, 116); // Cor verde para o fundo do cabeçalho
             }
+
+            // Ajustar altura do cabeçalho
+            tabela_Estoque.ColumnHeadersHeight = 50; // Define a altura do cabeçalho (ajuste conforme necessário)
+
+
+            // Adiciona o evento de validação
+            tabela_Estoque.CellValidating += Tabela_Estoque_CellValidating;
+}
+
+private void Tabela_Estoque_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+{
+    string columnName = tabela_Estoque.Columns[e.ColumnIndex].DataPropertyName;
+
+    // Valida campos de data
+    if (columnName == "data_colhida" || columnName == "data_entrada")
+    {
+        if (!DateTime.TryParse(e.FormattedValue.ToString(), out _))
+        {
+            MessageBox.Show("Insira uma data válida no formulario.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            e.Cancel = true; // Cancela a edição
         }
+    }
+
+    // Valida campos de texto que não devem conter números
+    else if (columnName == "nome_produto" || columnName == "unidade_medida" )
+    {
+        if (System.Text.RegularExpressions.Regex.IsMatch(e.FormattedValue.ToString(), @"\d"))
+        {
+            MessageBox.Show("Este campo não pode conter números.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            e.Cancel = true; // Cancela a edição
+        }
+    }
+
+    // Valida campos de número que não devem conter letras
+    else if (columnName == "quantidade_colhida" || columnName == "quantidade" || columnName == "lote")
+    {
+        if (!int.TryParse(e.FormattedValue.ToString(), out _))
+        {
+            MessageBox.Show("Este campo deve conter apenas números.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            e.Cancel = true; // Cancela a edição
+        }
+    }
+}
+
 
         private bool isEditingRow = false;
 
@@ -307,7 +350,7 @@ namespace UrbanGreenProject
 
         private bool DoesCodeExist(int codPlantacao)
         {
-            using (SqlConnection connection = new SqlConnection("Server=NOTEBOOK-LUCAS\\SQL;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
+            using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
             {
                 try
                 {
