@@ -374,11 +374,11 @@ namespace DashboardForm
                     "VALUES (@cod_controle, @cod_plantacao, @hora_inicial, @hora_final, @quantidade_agua)", connection);
 
                 // Adicionando parâmetros ao comando de inserção
-                insertAgua.Parameters.Add("@cod_controle", SqlDbType.Int);
-                insertAgua.Parameters.Add("@cod_plantacao", SqlDbType.Int);
-                insertAgua.Parameters.Add("@hora_inicial", SqlDbType.Time);
-                insertAgua.Parameters.Add("@hora_final", SqlDbType.Time);
-                insertAgua.Parameters.Add("@quantidade_agua", SqlDbType.Int);
+                insertAgua.Parameters.Add("@cod_controle", SqlDbType.Int, 0, "cod_controle");
+                insertAgua.Parameters.Add("@cod_plantacao", SqlDbType.Int,0, "cod_plantacao");
+                insertAgua.Parameters.Add("@hora_inicial", SqlDbType.Time,0 , "hora_inicial");
+                insertAgua.Parameters.Add("@hora_final", SqlDbType.Time, 0, "hora_final");
+                insertAgua.Parameters.Add("@quantidade_agua", SqlDbType.Int, 0, "quantidade_agua");
 
                 // Comando para atualização de dados na tabela Controle_agua
                 SqlCommand updateCommand = new SqlCommand(
@@ -387,11 +387,11 @@ namespace DashboardForm
                     "WHERE cod_controle = @cod_controle", connection);
 
                 // Adiciona os parâmetros ao comando de atualização
-                updateCommand.Parameters.AddWithValue("@cod_plantacao", SqlDbType.Int);
-                updateCommand.Parameters.AddWithValue("@hora_inicial", SqlDbType.Time);
-                updateCommand.Parameters.AddWithValue("@hora_final", SqlDbType.Time);
-                updateCommand.Parameters.AddWithValue("@quantidade_agua", SqlDbType.Int);
-                updateCommand.Parameters.AddWithValue("@cod_controle", SqlDbType.Int);
+                updateCommand.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
+                updateCommand.Parameters.Add("@hora_inicial", SqlDbType.Time,0, "hora_inicial");
+                updateCommand.Parameters.Add("@hora_final", SqlDbType.Time, 0, "hora_final");
+                updateCommand.Parameters.Add("@quantidade_agua", SqlDbType.Int, 0 , "quantidade_agua");
+                updateCommand.Parameters.Add("@cod_controle", SqlDbType.Int, 0, "cod_controle");
 
                 // Percorrer as linhas do DataGridView e fazer a inserção ou atualização conforme necessário
                 foreach (DataGridViewRow row in tabela_Agua.Rows)
@@ -693,13 +693,9 @@ namespace DashboardForm
             }
         }
 
+        
 
-
-
-
-
-
-        private void button1_Click_1(object sender, EventArgs e)
+         private void button1_Click_1(object sender, EventArgs e)
         {
             EstoqueForm estoqueForm = new EstoqueForm();
             this.Hide(); // Opcional: oculta o formulário atual

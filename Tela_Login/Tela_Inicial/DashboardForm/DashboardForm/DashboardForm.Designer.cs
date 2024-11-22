@@ -54,6 +54,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel26 = new Panel();
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
@@ -160,11 +164,13 @@
             panel3 = new Panel();
             label23 = new Label();
             label2 = new Label();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            tabela_Luz = new Guna.UI2.WinForms.Guna2DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewComboBoxColumn1 = new DataGridViewComboBoxColumn();
             salvar = new Guna.UI2.WinForms.Guna2GradientButton();
             btn_addRow = new Guna.UI2.WinForms.Guna2GradientButton();
+            btn_linha_luz = new Guna.UI2.WinForms.Guna2GradientButton();
+            inserirDadosLuz = new Guna.UI2.WinForms.Guna2GradientButton();
             panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
@@ -216,7 +222,7 @@
             caixaSaude.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imagemFolha).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tabela_Luz).BeginInit();
             SuspendLayout();
             // 
             // panel26
@@ -1443,15 +1449,15 @@
             label2.TabIndex = 50;
             label2.Text = "Monitoramento de Agua";
             // 
-            // guna2DataGridView1
+            // tabela_Luz
             // 
-            guna2DataGridView1.AllowUserToResizeRows = false;
+            tabela_Luz.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            tabela_Luz.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.FromArgb(136, 203, 194);
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
@@ -1459,10 +1465,10 @@
             dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(136, 203, 194);
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            guna2DataGridView1.ColumnHeadersHeight = 17;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewComboBoxColumn1 });
+            tabela_Luz.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            tabela_Luz.ColumnHeadersHeight = 17;
+            tabela_Luz.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            tabela_Luz.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewComboBoxColumn1 });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
@@ -1470,11 +1476,11 @@
             dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(180, 821);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            tabela_Luz.DefaultCellStyle = dataGridViewCellStyle7;
+            tabela_Luz.GridColor = Color.FromArgb(231, 229, 255);
+            tabela_Luz.Location = new Point(180, 821);
+            tabela_Luz.Name = "tabela_Luz";
+            tabela_Luz.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = Color.White;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
@@ -1482,31 +1488,31 @@
             dataGridViewCellStyle8.SelectionBackColor = Color.White;
             dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.Size = new Size(1050, 150);
-            guna2DataGridView1.TabIndex = 51;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(136, 203, 194);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 17;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            tabela_Luz.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            tabela_Luz.RowHeadersVisible = false;
+            tabela_Luz.Size = new Size(1050, 150);
+            tabela_Luz.TabIndex = 51;
+            tabela_Luz.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            tabela_Luz.ThemeStyle.AlternatingRowsStyle.Font = new Font("Segoe UI", 9F);
+            tabela_Luz.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText;
+            tabela_Luz.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            tabela_Luz.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            tabela_Luz.ThemeStyle.BackColor = Color.White;
+            tabela_Luz.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            tabela_Luz.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(136, 203, 194);
+            tabela_Luz.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            tabela_Luz.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            tabela_Luz.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            tabela_Luz.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            tabela_Luz.ThemeStyle.HeaderStyle.Height = 17;
+            tabela_Luz.ThemeStyle.ReadOnly = false;
+            tabela_Luz.ThemeStyle.RowsStyle.BackColor = Color.White;
+            tabela_Luz.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            tabela_Luz.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            tabela_Luz.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            tabela_Luz.ThemeStyle.RowsStyle.Height = 25;
+            tabela_Luz.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            tabela_Luz.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1560,6 +1566,47 @@
             btn_addRow.Text = "INSERIR  DADOS";
             btn_addRow.Click += btn_addRow_Click;
             // 
+            // btn_linha_luz
+            // 
+            btn_linha_luz.BorderRadius = 4;
+            btn_linha_luz.CustomizableEdges = customizableEdges18;
+            btn_linha_luz.DisabledState.BorderColor = Color.DarkGray;
+            btn_linha_luz.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_linha_luz.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_linha_luz.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btn_linha_luz.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_linha_luz.FillColor = Color.FromArgb(37, 213, 116);
+            btn_linha_luz.FillColor2 = Color.FromArgb(50, 159, 99);
+            btn_linha_luz.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_linha_luz.ForeColor = Color.White;
+            btn_linha_luz.Location = new Point(964, 781);
+            btn_linha_luz.Name = "btn_linha_luz";
+            btn_linha_luz.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            btn_linha_luz.Size = new Size(120, 34);
+            btn_linha_luz.TabIndex = 55;
+            btn_linha_luz.Text = "INSERIR  DADOS";
+            
+            // 
+            // inserirDadosLuz
+            // 
+            inserirDadosLuz.BorderRadius = 4;
+            inserirDadosLuz.CustomizableEdges = customizableEdges20;
+            inserirDadosLuz.DisabledState.BorderColor = Color.DarkGray;
+            inserirDadosLuz.DisabledState.CustomBorderColor = Color.DarkGray;
+            inserirDadosLuz.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            inserirDadosLuz.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            inserirDadosLuz.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            inserirDadosLuz.FillColor = Color.FromArgb(37, 213, 116);
+            inserirDadosLuz.FillColor2 = Color.FromArgb(50, 159, 99);
+            inserirDadosLuz.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            inserirDadosLuz.ForeColor = Color.White;
+            inserirDadosLuz.Location = new Point(1105, 781);
+            inserirDadosLuz.Name = "inserirDadosLuz";
+            inserirDadosLuz.ShadowDecoration.CustomizableEdges = customizableEdges21;
+            inserirDadosLuz.Size = new Size(120, 34);
+            inserirDadosLuz.TabIndex = 56;
+            inserirDadosLuz.Text = "SALVAR DADOS";
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1567,9 +1614,11 @@
             AutoScroll = true;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1264, 857);
+            Controls.Add(inserirDadosLuz);
+            Controls.Add(btn_linha_luz);
             Controls.Add(btn_addRow);
             Controls.Add(salvar);
-            Controls.Add(guna2DataGridView1);
+            Controls.Add(tabela_Luz);
             Controls.Add(label2);
             Controls.Add(tabela_Agua);
             Controls.Add(vScrollBar1);
@@ -1657,7 +1706,7 @@
             ((System.ComponentModel.ISupportInitialize)imagemFolha).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tabela_Luz).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1770,10 +1819,12 @@
         private Panel panel3;
         private Label label23;
         private Label label2;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2DataGridView tabela_Luz;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private Guna.UI2.WinForms.Guna2GradientButton salvar;
         private Guna.UI2.WinForms.Guna2GradientButton btn_addRow;
+        private Guna.UI2.WinForms.Guna2GradientButton btn_linha_luz;
+        private Guna.UI2.WinForms.Guna2GradientButton inserirDadosLuz;
     }
 }

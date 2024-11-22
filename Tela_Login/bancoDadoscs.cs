@@ -370,7 +370,7 @@ IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'fazenda_urbana_telefone')
             cod_plantacao INT,              -- Código da plantação
             hora_inicial TIME,              -- Hora inicial do controle
             hora_final TIME,                -- Hora final do controle
-            quantidade_agua , -- Quantidade de água
+            quantidade_agua INT , -- Quantidade de água
             FOREIGN KEY(cod_plantacao) REFERENCES Plantacao(cod_plantacao)  -- Chave estrangeira
         );
     END

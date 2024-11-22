@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Tela_Login",
+    "\\Tela_Login\\Tela_Inicial",
+    "\\Tela_Login\\Tela_Inicial\\DashboardForm",
+    "\\Tela_Login\\Tela_Inicial\\DashboardForm\\DashboardForm"
+  ],
+  "SelectedNode": "\\Tela_Login\\Tela_Inicial\\DashboardForm\\DashboardForm\\DashboardForm.cs",
+  "PreviewInSolutionExplorer": false
+}
