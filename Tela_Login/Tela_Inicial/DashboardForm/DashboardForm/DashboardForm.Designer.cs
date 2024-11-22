@@ -1585,7 +1585,7 @@
             btn_linha_luz.Size = new Size(120, 34);
             btn_linha_luz.TabIndex = 55;
             btn_linha_luz.Text = "INSERIR  DADOS";
-            
+            btn_linha_luz.Click += btn_linha_luz_Click;
             // 
             // inserirDadosLuz
             // 
@@ -1606,6 +1606,7 @@
             inserirDadosLuz.Size = new Size(120, 34);
             inserirDadosLuz.TabIndex = 56;
             inserirDadosLuz.Text = "SALVAR DADOS";
+            inserirDadosLuz.Click += inserirDadosLuz_Click;
             // 
             // Dashboard
             // 
