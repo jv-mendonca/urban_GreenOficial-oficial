@@ -22,6 +22,7 @@ namespace DashboardForm
         private string connectionString;
         private string nomeUsuario;
         private int currentIndex = 0;
+        private int indiceAtual = 0;  // Armazena o índice da espécie atual a ser exibida
         private EstoqueForm estoqueForm; // Variável para armazenar a instância do EstoqueForm
         private List<Monitoramento> monitoramentos = new List<Monitoramento>();
         private string primeiroNome;
@@ -43,10 +44,14 @@ namespace DashboardForm
             loadControleLuz();
             ConfigureDataGridView2();
             CarregarTiposParaComboBox2();
+            AtualizarGraficos();
 
 
 
         }
+
+
+
 
         private void ExibirNomeUsuario()
         {
@@ -63,6 +68,8 @@ namespace DashboardForm
                 MessageBox.Show("Nome do usuário não fornecido.");
             }
         }
+
+
 
 
 
@@ -93,23 +100,29 @@ namespace DashboardForm
                 DateTime dataPrevista = reader["data_prevista"] != DBNull.Value ? Convert.ToDateTime(reader["data_prevista"]) : DateTime.MinValue;
                 string saude = reader["saude_plantacao"] != DBNull.Value ? reader["saude_plantacao"].ToString() : "Indefinido";
 
-                decimal totalAguaGasta = reader["TotalAguaGasta"] != DBNull.Value ? reader.GetDecimal(reader.GetOrdinal("TotalAguaGasta")) : 0;
-                decimal totalGastoLuz = reader["TotalGastoLuz"] != DBNull.Value ? reader.GetDecimal(reader.GetOrdinal("TotalGastoLuz")) : 0;
-                decimal temperatura = reader["temperatura"] != DBNull.Value ? reader.GetDecimal(reader.GetOrdinal("temperatura")) : 0;
+                // Corrigindo a conversão para decimal
+                double totalAguaGasta = reader["TotalAguaGasta"] != DBNull.Value
+                    ? Convert.ToDouble(reader["TotalAguaGasta"])
+                    : 0;
 
+                double totalGastoLuz = reader["TotalGastoLuz"] != DBNull.Value
+                    ? Convert.ToDouble(reader["TotalGastoLuz"])
+                    : 0;
+
+                double temperatura = reader["temperatura"] != DBNull.Value
+                    ? Convert.ToDouble(reader["temperatura"])
+                    : 0;
 
                 string lote = reader["lote"] != DBNull.Value ? reader["lote"].ToString() : "Desconhecido"; // Obtendo o valor de lote
 
-                decimal totalAguaDisponivel = ObterTotalAguaDisponivel(codPlantacao);
-                decimal porcentagemAguaGasta = totalAguaDisponivel > 0 ? (totalAguaGasta / totalAguaDisponivel) * 100 : 0;
+                double totalAguaDisponivel = ObterTotalAguaDisponivel(codPlantacao); // Mudando para decimal
+                double porcentagemAguaGasta = totalAguaDisponivel > 0 ? (totalAguaGasta / totalAguaDisponivel) * 100 : 0;
 
-                decimal totalLuzDisponivel = ObterTotalLuzDisponivel(codPlantacao);
-                decimal porcentagemLuzGasta = totalLuzDisponivel > 0 ? (totalGastoLuz / totalLuzDisponivel) * 100 : 0;
+                double totalLuzDisponivel = ObterTotalLuzDisponivel(codPlantacao); // Mudando para decimal
+                double porcentagemLuzGasta = totalLuzDisponivel > 0 ? (totalGastoLuz / totalLuzDisponivel) * 100 : 0;
 
                 porcentagemAguaGasta = Math.Min(porcentagemAguaGasta, 100);
                 porcentagemLuzGasta = Math.Min(porcentagemLuzGasta, 100);
-
-
 
                 Monitoramento monitoramento = new Monitoramento
                 {
@@ -119,10 +132,7 @@ namespace DashboardForm
                     DataPlantio = dataPlantio,
                     DataPrevista = dataPrevista,
                     Saude = saude,
-                    PorcentagemAguaGasta = Math.Round(porcentagemAguaGasta, 2),
-                    PorcentagemLuzGasta = Math.Round(porcentagemLuzGasta, 2),
-                    TotalGastoLuz = Math.Round(totalGastoLuz, 2),
-                    Temperatura = Math.Round(temperatura, 1),
+
                     Lote = lote // Armazenando o valor de lote
                 };
 
@@ -130,36 +140,23 @@ namespace DashboardForm
             });
         }
 
+        // Alterações na lógica de consulta para garantir que tudo seja decimal
 
-
-
-        private decimal ObterTotalLuzDisponivel(int codPlantacao)
+        private double ObterTotalLuzDisponivel(int codPlantacao)
         {
-            // Aqui você deve implementar a lógica para obter o total de luz disponível da sua base de dados.
-            // Para exemplo, vou retornar um valor fixo, mas você deve buscar esse valor na tabela correspondente.
+            // Exemplo de valor fixo retornado como decimal
+            return 1000; // 'M' indica que é um decimal
+        }
 
-            // Substitua isso pela lógica real
-            return 1000; // Exemplo: 1000 unidades de luz disponíveis
+        private double ObterTotalAguaDisponivel(int codPlantacao)
+        {
+            // Exemplo de valor fixo retornado como decimal
+            return 1000; // 'M' indica que é um decimal
         }
 
 
 
-
-
-
-
-        private decimal ObterTotalAguaDisponivel(int codPlantacao)
-        {
-            // Aqui você deve implementar a lógica para obter o total de água disponível da sua base de dados.
-            // Para exemplo, vou retornar um valor fixo, mas você deve buscar esse valor na tabela correspondente.
-
-            // Substitua isso pela lógica real
-            return 1000; // Exemplo: 1000 litros disponíveis
-        }
-
-
-
-        private void ExecutarConsulta(string query, Action<SqlDataReader> action)
+       private void ExecutarConsulta(string query, Action<SqlDataReader> action)
         {
             try
             {
@@ -243,6 +240,197 @@ namespace DashboardForm
                 CentralizarTexto(txt_lote, caixa_lote);
             }
         }
+
+        private Dictionary<int, double> CalcularPorcentagemAguaPorPlantacao()
+        {
+            var resultados = new Dictionary<int, double>();
+
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                string query = @"
+            SELECT 
+                p.cod_plantacao AS CodPlantacao,
+                SUM(c.quantidade_agua) AS TotalAguaGasta
+                
+            FROM 
+                Plantacao p
+            LEFT JOIN 
+                Controle_Agua c ON p.cod_plantacao = c.cod_plantacao
+            GROUP BY 
+                p.cod_plantacao";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int codPlantacao = Convert.ToInt32(reader["CodPlantacao"]);
+                        double totalAguaGasta = reader["TotalAguaGasta"] != DBNull.Value
+                            ? Convert.ToDouble(reader["TotalAguaGasta"])
+                            : 0;
+
+                        double totalAguaDisponivel = ObterTotalAguaDisponivel(codPlantacao);
+                        double porcentagemAguaGasta = (totalAguaGasta / totalAguaDisponivel) * 100;
+
+                        resultados[codPlantacao] = porcentagemAguaGasta;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao calcular porcentagens de água por plantação: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return resultados;
+        }
+
+        private Dictionary<int, double> CalcularPorcentagemLuzPorPlantacao()
+        {
+            var resultados = new Dictionary<int, double>();
+
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                string query = @"
+        SELECT 
+            p.cod_plantacao AS CodPlantacao,
+            COALESCE(SUM(l.intensidade_luz * DATEDIFF(MINUTE, l.hora_inicial, l.hora_final) / 60.0), 0) AS TotalGastoLuz
+        FROM 
+            Plantacao p
+        LEFT JOIN 
+            Controle_Luz l ON p.cod_plantacao = l.cod_plantacao
+        GROUP BY 
+            p.cod_plantacao";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int codPlantacao = Convert.ToInt32(reader["CodPlantacao"]);
+                        double totalGastoLuz = Convert.ToDouble(reader["TotalGastoLuz"]);
+
+                        // Obter o valor de luz disponível para a plantação
+                        double totalLuzDisponivel = ObterTotalLuzDisponivel(codPlantacao); // Deve retornar a quantidade total de luz disponível
+                        double porcentagemLuzGasta = totalLuzDisponivel > 0 ? (totalGastoLuz / totalLuzDisponivel) * 100 : 0;
+
+                        resultados[codPlantacao] = porcentagemLuzGasta;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao calcular porcentagens de luz por plantação: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return resultados;
+        }
+
+
+
+
+        private void AtualizarGraficos()
+        {
+            var dadosAguaPorPlantacao = CalcularPorcentagemAguaPorPlantacao();
+            var dadosLuzPorPlantacao = CalcularPorcentagemLuzPorPlantacao(); // Função para calcular porcentagem de luz
+
+            List<int> codPlantacoes = dadosAguaPorPlantacao.Keys.ToList(); // Lista de códigos de plantação
+            int totalPlantacoes = codPlantacoes.Count;
+
+            // Atualiza o gráfico com base no índice atual para água
+            if (totalPlantacoes > 0 && currentIndex < totalPlantacoes)
+            {
+                // Recupera a porcentagem de água para a plantação no índice atual
+                double porcentagemAgua = dadosAguaPorPlantacao[codPlantacoes[currentIndex]];
+
+                // Atualiza o gráfico com a porcentagem de água da plantação atual
+                graficoagua.Value = (int)porcentagemAgua; // Exibe a porcentagem no gráfico
+                txtPorcentagemAguaGasta.Text = $"{graficoagua.Value}%"; // Exibe a porcentagem no texto
+            }
+            else
+            {
+                graficoagua.Value = 0;
+                txtPorcentagemAguaGasta.Text = "0";
+            }
+
+            // Atualiza o gráfico com base no índice atual para luz
+            if (totalPlantacoes > 0 && currentIndex < totalPlantacoes)
+            {
+                // Recupera a porcentagem de luz para a plantação no índice atual
+                double porcentagemLuz = dadosLuzPorPlantacao[codPlantacoes[currentIndex]];
+
+                // Atualiza o gráfico com a porcentagem de luz da plantação atual
+                graficoLuz.Value = (int)porcentagemLuz; // Exibe a porcentagem no gráfico
+                txtPorcetagemLuz.Text = $"{graficoLuz.Value}%"; // Exibe a porcentagem no texto
+            }
+            else
+            {
+                graficoLuz.Value = 0;
+                txtPorcetagemLuz.Text = "0";
+            }
+
+            // Posiciona a saúde na parte superior (se necessário)
+            PosicionarSaudeNaParteSuperior(titulografico1, caixaAgua);
+            PosicionarSaudeNaParteSuperior(titulografico2, caixaLuz); // Para o gráfico de luz
+        }
+
+        private void btn_Proximo_Click_1(object sender, EventArgs e)
+        {
+            // Atualiza o índice para a próxima plantação
+            currentIndex = (currentIndex < monitoramentos.Count - 1) ? currentIndex + 1 : 0;  // Vai para a próxima ou volta para o início.
+
+            // Exibe o monitoramento da plantação atual
+            ExibirMonitoramento(currentIndex);
+
+            // Atualiza os gráficos com os dados da nova plantação
+            AtualizarGraficos();
+        }
+
+
+
+        private void btn_Anterio_Click(object sender, EventArgs e)
+        {
+            // Atualiza o índice para a plantação anterior
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : monitoramentos.Count - 1;  // Vai para a anterior ou volta para o último
+
+            // Exibe o monitoramento da plantação no índice atual
+            ExibirMonitoramento(currentIndex);
+
+            // Atualiza os gráficos com os dados da plantação atual
+            AtualizarGraficos();
+        }
+        private void PosicionarSaudeNaParteSuperior(Control txtControl, Control caixaControl)
+        {
+            // Define o deslocamento vertical para o topo (com um pequeno espaço de 10px)
+            txtControl.Top = 10; // Deixe o texto bem no topo, ajustando conforme necessário
+
+            // Centraliza horizontalmente na caixa
+            txtControl.Left = (caixaControl.Width - txtControl.Width) / 2;
+        }
+
 
 
 
@@ -571,13 +759,13 @@ namespace DashboardForm
 
             // Configura o ComboBox para usar esses dados
             DataGridViewComboBoxColumn comboColumn = (DataGridViewComboBoxColumn)tabela_Agua.Columns["tipo_plantacao"];
-           
+
 
             comboColumn.DataSource = plantacaoTable;
             comboColumn.DisplayMember = "tipo_plantacao"; // O que será exibido no ComboBox
             comboColumn.ValueMember = "cod_plantacao"; // O valor real armazenado (cod_plantacao)
 
-           
+
         }
 
 
@@ -592,7 +780,7 @@ namespace DashboardForm
                 adapter.Fill(plantacaoTable); // Preenche os dados da tabela com a consulta
             }
 
-          
+
 
             // Configura o ComboBox para a coluna "tipo_plantacao" da tabela_Luz
             DataGridViewComboBoxColumn comboColumn1 = (DataGridViewComboBoxColumn)tabela_Luz.Columns["tipo_plantacao"];
@@ -791,7 +979,7 @@ namespace DashboardForm
             LEFT JOIN
                 Controle_temperatura t ON p.cod_plantacao = t.cod_temperatura", connection);
 
-                
+
 
                 // Definir o DataSource do DataGridView
                 tabela_Luz.DataSource = controle_luztable;
@@ -955,9 +1143,9 @@ namespace DashboardForm
                 DataPropertyName = "cod_plantacao", // Vinculado ao valor interno no DataTable
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
                 DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter },
-                
+
             };
-            
+
             tabela_Luz.Columns.Add(comboColumn1);
 
             // Coluna: Hora Inicial
@@ -1044,7 +1232,7 @@ namespace DashboardForm
             return newCode;
         }
 
-        
+
 
 
 
@@ -1071,7 +1259,7 @@ namespace DashboardForm
             }
         }
 
-        
+
 
         private void inserirDadosLuz_Click(object sender, EventArgs e)
         {
@@ -1300,17 +1488,7 @@ namespace DashboardForm
             saudeForm.Show();
         }
 
-        private void btn_Proximo_Click_1(object sender, EventArgs e)
-        {
-            currentIndex = (currentIndex < monitoramentos.Count - 1) ? currentIndex + 1 : 0;
-            ExibirMonitoramento(currentIndex);
-        }
-
-        private void btn_Anterio_Click(object sender, EventArgs e)
-        {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : monitoramentos.Count - 1;
-            ExibirMonitoramento(currentIndex);
-        }
+        
 
 
         private bool isEditingRow = false;
@@ -1326,11 +1504,11 @@ namespace DashboardForm
 
         }
 
-       
+
     }
 }
 
 
 
-  
+
 

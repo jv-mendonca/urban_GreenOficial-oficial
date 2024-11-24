@@ -85,10 +85,10 @@ namespace tela_de_logins
         {
             // Verificar se o banco de dados existe antes de tentar criar as tabelas
             //tring de conexão
-string connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
+            string connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
 
             //Verificação da existência do banco de dados
-string checkDbQuery = $@"
+            string checkDbQuery = $@"
 IF EXISTS (SELECT * FROM sys.databases WHERE name = '{nomeBanco}')
 BEGIN
   
@@ -393,6 +393,7 @@ BEGIN
         intensidade_luz DECIMAL(5, 2),
         data_inicial DATE,  -- Data inicial
         data_final DATE,  -- Data final
+        temperatura INT,
         fonte_luz VARCHAR(100),  -- Fonte da luz
         tipo_luz VARCHAR(100),  -- Tipo da luz
         FOREIGN KEY (cod_plantacao) REFERENCES Plantacao(cod_plantacao)  -- Chave estrangeira
@@ -500,8 +501,8 @@ ALTER COLUMN eficacia DECIMAL(5,2);  -- Modifica a coluna 'eficácia'";
 
         }
 
-        
-       
+
+
 
     }
 }
