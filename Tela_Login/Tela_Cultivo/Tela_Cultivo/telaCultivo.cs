@@ -6,6 +6,7 @@ using tela_de_logins;
 using DashboardForm;
 using Tela_Saude2;
 using UrbanGreenProject;
+using Tela_Login;
 
 namespace Tela_Cultivo
 {
@@ -104,7 +105,7 @@ namespace Tela_Cultivo
 
 
 
-      private void ConfigureDataGridView()
+        private void ConfigureDataGridView()
         {
             // Configurar o DataGridView
             tabelaCultivo.DataSource = cultivoTable;
@@ -488,6 +489,15 @@ namespace Tela_Cultivo
             telaSaude saudeForm = new telaSaude();
             this.Hide();
             saudeForm.Show();
+        }
+
+        private void tela_saida_Click(object sender, EventArgs e)
+        {
+            // Exibir a tela de login
+            Form1 telaLogin = new Form1();
+            this.Hide();
+            telaLogin.Show();
+
         }
     }
 }

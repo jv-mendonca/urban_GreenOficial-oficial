@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Tela_Cultivo;
+using Tela_Login;
 using UrbanGreenProject;
 using static DashboardForm.Dashboard;
 
@@ -150,7 +151,7 @@ WHERE
                 adapter.DeleteCommand = deleteSaude;
 
 
-   
+
 
 
 
@@ -276,8 +277,8 @@ WHERE
                 }
             });
 
-            
-            
+
+
 
 
 
@@ -779,6 +780,22 @@ WHERE
             telaSaude saudeForm = new telaSaude();
             this.Hide();
             saudeForm.Show();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tela_saida_Click(object sender, EventArgs e)
+        {
+
+
+            // Exibir a tela de login
+            Form1 telaLogin = new Form1();
+            this.Hide();
+            telaLogin.Show();
+
         }
     }
 }

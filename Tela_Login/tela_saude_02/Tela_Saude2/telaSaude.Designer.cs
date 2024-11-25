@@ -81,11 +81,14 @@
             caixagrafico1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             grafico1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             titulografico1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            panel41 = new Panel();
-            label39 = new Label();
-            pictureBox14 = new PictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel2 = new Panel();
+            label3 = new Label();
+            pictureBox3 = new PictureBox();
+            button1 = new Button();
+            pictureBox11 = new PictureBox();
+            label4 = new Label();
+            tela_saida = new Button();
             pictureBox5 = new PictureBox();
             pictureBox9 = new PictureBox();
             label34 = new Label();
@@ -94,17 +97,8 @@
             pictureBox15 = new PictureBox();
             pictureBox8 = new PictureBox();
             label31 = new Label();
-            panel40 = new Panel();
-            label38 = new Label();
-            pictureBox13 = new PictureBox();
             pictureBox6 = new PictureBox();
-            panel39 = new Panel();
-            label37 = new Label();
-            pictureBox12 = new PictureBox();
             label35 = new Label();
-            panel38 = new Panel();
-            label36 = new Label();
-            pictureBox11 = new PictureBox();
             label32 = new Label();
             guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             pictureBox10 = new PictureBox();
@@ -141,21 +135,15 @@
             grafico2.SuspendLayout();
             caixagrafico1.SuspendLayout();
             grafico1.SuspendLayout();
-            panel41.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            panel40.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            panel39.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
-            panel38.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -552,40 +540,6 @@
             titulografico1.TabIndex = 19;
             titulografico1.Text = "Hortalliças";
             // 
-            // panel41
-            // 
-            panel41.BackColor = Color.Transparent;
-            panel41.Controls.Add(label39);
-            panel41.Controls.Add(pictureBox14);
-            panel41.Location = new Point(12, 568);
-            panel41.Name = "panel41";
-            panel41.Size = new Size(147, 35);
-            panel41.TabIndex = 13;
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.Cursor = Cursors.Hand;
-            label39.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label39.ForeColor = Color.Gray;
-            label39.Location = new Point(33, 8);
-            label39.Name = "label39";
-            label39.Size = new Size(48, 19);
-            label39.TabIndex = 6;
-            label39.Text = "Ajuda";
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.BackColor = Color.Transparent;
-            pictureBox14.Cursor = Cursors.Hand;
-            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(7, 7);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(20, 20);
-            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox14.TabIndex = 6;
-            pictureBox14.TabStop = false;
-            // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.AutoSize = false;
@@ -600,19 +554,21 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(pictureBox11);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(tela_saida);
             panel2.Controls.Add(pictureBox5);
             panel2.Controls.Add(pictureBox9);
             panel2.Controls.Add(label34);
             panel2.Controls.Add(label33);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(pictureBox8);
-            panel2.Controls.Add(panel41);
             panel2.Controls.Add(label31);
-            panel2.Controls.Add(panel40);
             panel2.Controls.Add(pictureBox6);
-            panel2.Controls.Add(panel39);
             panel2.Controls.Add(label35);
-            panel2.Controls.Add(panel38);
             panel2.Controls.Add(label32);
             panel2.Controls.Add(guna2Separator3);
             panel2.Controls.Add(pictureBox10);
@@ -629,6 +585,71 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(169, 681);
             panel2.TabIndex = 38;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.Hand;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(42, 457);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 19);
+            label3.TabIndex = 62;
+            label3.Text = "Ajuda";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Cursor = Cursors.Hand;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(16, 457);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 67;
+            pictureBox3.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(9, 450);
+            button1.Name = "button1";
+            button1.Size = new Size(144, 35);
+            button1.TabIndex = 66;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.BackColor = Color.Transparent;
+            pictureBox11.Cursor = Cursors.Hand;
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(16, 418);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(20, 20);
+            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox11.TabIndex = 65;
+            pictureBox11.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.Hand;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label4.ForeColor = Color.Gray;
+            label4.Location = new Point(42, 419);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 19);
+            label4.TabIndex = 63;
+            label4.Text = "Sair";
+            // 
+            // tela_saida
+            // 
+            tela_saida.Location = new Point(9, 409);
+            tela_saida.Name = "tela_saida";
+            tela_saida.Size = new Size(144, 35);
+            tela_saida.TabIndex = 64;
+            tela_saida.UseVisualStyleBackColor = true;
+            tela_saida.Click += tela_saida_Click;
             // 
             // pictureBox5
             // 
@@ -725,40 +746,6 @@
             label31.TabIndex = 56;
             label31.Text = "Cultivo";
             // 
-            // panel40
-            // 
-            panel40.BackColor = Color.Transparent;
-            panel40.Controls.Add(label38);
-            panel40.Controls.Add(pictureBox13);
-            panel40.Location = new Point(12, 527);
-            panel40.Name = "panel40";
-            panel40.Size = new Size(147, 35);
-            panel40.TabIndex = 12;
-            // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.Cursor = Cursors.Hand;
-            label38.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label38.ForeColor = Color.Gray;
-            label38.Location = new Point(33, 8);
-            label38.Name = "label38";
-            label38.Size = new Size(35, 19);
-            label38.TabIndex = 6;
-            label38.Text = "Sair";
-            // 
-            // pictureBox13
-            // 
-            pictureBox13.BackColor = Color.Transparent;
-            pictureBox13.Cursor = Cursors.Hand;
-            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(7, 7);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(20, 20);
-            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox13.TabIndex = 6;
-            pictureBox13.TabStop = false;
-            // 
             // pictureBox6
             // 
             pictureBox6.BackColor = Color.Transparent;
@@ -770,40 +757,6 @@
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 55;
             pictureBox6.TabStop = false;
-            // 
-            // panel39
-            // 
-            panel39.BackColor = Color.Transparent;
-            panel39.Controls.Add(label37);
-            panel39.Controls.Add(pictureBox12);
-            panel39.Location = new Point(12, 450);
-            panel39.Name = "panel39";
-            panel39.Size = new Size(147, 35);
-            panel39.TabIndex = 12;
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.Cursor = Cursors.Hand;
-            label37.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label37.ForeColor = Color.Gray;
-            label37.Location = new Point(33, 8);
-            label37.Name = "label37";
-            label37.Size = new Size(105, 19);
-            label37.TabIndex = 6;
-            label37.Text = "Configurações";
-            // 
-            // pictureBox12
-            // 
-            pictureBox12.BackColor = Color.Transparent;
-            pictureBox12.Cursor = Cursors.Hand;
-            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(7, 7);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(20, 20);
-            pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox12.TabIndex = 6;
-            pictureBox12.TabStop = false;
             // 
             // label35
             // 
@@ -817,40 +770,6 @@
             label35.Size = new Size(77, 19);
             label35.TabIndex = 42;
             label35.Text = "Relatórios";
-            // 
-            // panel38
-            // 
-            panel38.BackColor = Color.Transparent;
-            panel38.Controls.Add(label36);
-            panel38.Controls.Add(pictureBox11);
-            panel38.Location = new Point(12, 409);
-            panel38.Name = "panel38";
-            panel38.Size = new Size(147, 35);
-            panel38.TabIndex = 12;
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.Cursor = Cursors.Hand;
-            label36.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label36.ForeColor = Color.Gray;
-            label36.Location = new Point(33, 8);
-            label36.Name = "label36";
-            label36.Size = new Size(48, 19);
-            label36.TabIndex = 6;
-            label36.Text = "Conta";
-            // 
-            // pictureBox11
-            // 
-            pictureBox11.BackColor = Color.Transparent;
-            pictureBox11.Cursor = Cursors.Hand;
-            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(7, 7);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(20, 20);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 6;
-            pictureBox11.TabStop = false;
             // 
             // label32
             // 
@@ -1108,26 +1027,16 @@
             caixagrafico1.PerformLayout();
             grafico1.ResumeLayout(false);
             grafico1.PerformLayout();
-            panel41.ResumeLayout(false);
-            panel41.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            panel40.ResumeLayout(false);
-            panel40.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            panel39.ResumeLayout(false);
-            panel39.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
-            panel38.ResumeLayout(false);
-            panel38.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -1170,12 +1079,6 @@
         private Panel panel40;
         private Label label38;
         private PictureBox pictureBox13;
-        private Panel panel39;
-        private Label label37;
-        private PictureBox pictureBox12;
-        private Panel panel38;
-        private Label label36;
-        private PictureBox pictureBox11;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator3;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
@@ -1213,5 +1116,11 @@
         private Button btn_saude;
         private PictureBox pictureBox7;
         private Button btn_monitoramento;
+        private Label label3;
+        private PictureBox pictureBox3;
+        private Button button1;
+        private PictureBox pictureBox11;
+        private Label label4;
+        private Button tela_saida;
     }
 }

@@ -2,10 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Tela_Login",
+    "\\Tela_Login\\Tela_Estoque",
+    "\\Tela_Login\\Tela_Estoque\\TelaEstoque",
+    "\\Tela_Login\\Tela_Estoque\\TelaEstoque\\UrbanGreenProject",
     "\\Tela_Login\\Tela_Inicial",
     "\\Tela_Login\\Tela_Inicial\\DashboardForm",
     "\\Tela_Login\\Tela_Inicial\\DashboardForm\\DashboardForm"
   ],
-  "SelectedNode": "\\Tela_Login.sln",
+  "SelectedNode": "\\Tela_Login\\Tela_Inicial\\DashboardForm\\DashboardForm\\DashboardForm.cs",
   "PreviewInSolutionExplorer": false
 }

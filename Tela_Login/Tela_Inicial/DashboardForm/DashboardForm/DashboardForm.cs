@@ -18,6 +18,8 @@ namespace DashboardForm
     public partial class Dashboard : Form
     {
         private SqlConnection connection;
+        private SqlDataAdapter adapter;
+
         private string nomeBanco = "fazenda_urbana_Urban_Green_pim4";
         private string connectionString;
         private string nomeUsuario;
@@ -26,7 +28,7 @@ namespace DashboardForm
         private EstoqueForm estoqueForm; // Variável para armazenar a instância do EstoqueForm
         private List<Monitoramento> monitoramentos = new List<Monitoramento>();
         private string primeiroNome;
-        private DataTable adapter;
+        
         private DataTable controle_aguaTable;
         private DataTable controle_luztable;
         public Dashboard(string primeiroNome)
@@ -38,8 +40,8 @@ namespace DashboardForm
             CarregarPlantacao();
             this.AutoScaleMode = AutoScaleMode.Dpi;
             ExibirMonitoramento(currentIndex);
-            loadControleAgua();
-            ConfiguredataGridView();
+            LoadControle_agua();
+            ConfigureDataGridView();
             CarregarTiposParaComboBox();
             loadControleLuz();
             ConfigureDataGridView2();
@@ -81,15 +83,15 @@ namespace DashboardForm
     SELECT p.cod_plantacao, p.especie, p.tipo_plantacao, p.data_plantio, p.data_prevista, p.saude_plantacao,
            SUM(c.quantidade_agua) AS TotalAguaGasta,
            COALESCE(SUM(l.intensidade_luz), 0) AS TotalGastoLuz,
-           t.temperatura, 
+           l.temperatura, 
            SUM(e.quantidade) AS TotalEstoque, 
            e.lote -- Incluindo a coluna 'lote' da tabela Estoque
     FROM Plantacao p
     LEFT JOIN controle_Agua c ON p.cod_plantacao = c.cod_plantacao
     LEFT JOIN Controle_Luz l ON p.cod_plantacao = l.cod_plantacao
-    LEFT JOIN controle_temperatura t ON p.cod_plantacao = t.cod_plantacao
+    
     LEFT JOIN Estoque e ON p.cod_plantacao = e.cod_plantacao -- Junção com a tabela Estoque
-    GROUP BY p.cod_plantacao, p.especie, p.tipo_plantacao, p.data_plantio, p.data_prevista, p.saude_plantacao, t.temperatura, e.lote";
+    GROUP BY p.cod_plantacao, p.especie, p.tipo_plantacao, p.data_plantio, p.data_prevista, p.saude_plantacao, l.temperatura, e.lote";
 
             ExecutarConsulta(query, reader =>
             {
@@ -109,8 +111,8 @@ namespace DashboardForm
                     ? Convert.ToDouble(reader["TotalGastoLuz"])
                     : 0;
 
-                double temperatura = reader["temperatura"] != DBNull.Value
-                    ? Convert.ToDouble(reader["temperatura"])
+                int temperatura = reader["temperatura"] != DBNull.Value
+                    ? Convert.ToInt32(reader["temperatura"])
                     : 0;
 
                 string lote = reader["lote"] != DBNull.Value ? reader["lote"].ToString() : "Desconhecido"; // Obtendo o valor de lote
@@ -132,7 +134,7 @@ namespace DashboardForm
                     DataPlantio = dataPlantio,
                     DataPrevista = dataPrevista,
                     Saude = saude,
-
+                    Temperatura = temperatura,
                     Lote = lote // Armazenando o valor de lote
                 };
 
@@ -156,7 +158,7 @@ namespace DashboardForm
 
 
 
-       private void ExecutarConsulta(string query, Action<SqlDataReader> action)
+        private void ExecutarConsulta(string query, Action<SqlDataReader> action)
         {
             try
             {
@@ -460,15 +462,15 @@ namespace DashboardForm
             {
                 case "Saudavel":
                     txtSaude.ForeColor = Color.Green;
-                    caminhoImagem = Path.Combine(basePath, "folha-verde.png");
+                    caminhoImagem = Path.Combine(basePath, "verdinha.png");
                     break;
                 case "Intermediario":
                     txtSaude.ForeColor = Color.Orange;
-                    caminhoImagem = Path.Combine(basePath, "folha_amarela.png");
+                    caminhoImagem = Path.Combine(basePath, "amarelo.png");
                     break;
                 case "Perigo":
                     txtSaude.ForeColor = Color.Red;
-                    caminhoImagem = Path.Combine(basePath, "folha_vermelha.jpg");
+                    caminhoImagem = Path.Combine(basePath, "vermelha.jpg");
                     break;
 
             }
@@ -516,179 +518,87 @@ namespace DashboardForm
         }
 
 
-        private void loadControleAgua()
+        private void LoadControle_agua()
         {
             try
             {
-                // Verifica se a conexão está inicializada
                 if (connection == null)
                 {
-                    // Cria a instância da conexão
                     string connectionString = $"Server=MENDONÇA\\SQLEXPRESS;Database={nomeBanco};Trusted_Connection=True;TrustServerCertificate=True;";
                     connection = new SqlConnection(connectionString);
                 }
 
-                // Verifica se a conexão está aberta, se não, abre a conexão
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
                 }
 
-                // Consulta SQL corrigida
-                SqlDataAdapter adapter = new SqlDataAdapter(
+                // Use o `adapter` global
+                adapter = new SqlDataAdapter(
                     @"SELECT 
-        p.cod_plantacao,
-        p.tipo_plantacao,
-        a.cod_controle,
-        a.hora_inicial,
-        a.hora_final,
-        a.quantidade_agua
-    FROM 
-        Plantacao p
-    LEFT JOIN 
-        Controle_agua a ON p.cod_plantacao = a.cod_plantacao
-    WHERE 
-        p.cod_plantacao IS NOT NULL 
-        AND a.hora_inicial IS NOT NULL 
-        AND a.hora_final IS NOT NULL 
-        AND a.quantidade_agua IS NOT NULL", connection);
+                p.cod_plantacao,
+                p.tipo_plantacao,
+                a.cod_controle,
+                a.hora_inicial,
+                a.hora_final,
+                a.quantidade_agua
+              FROM 
+                Plantacao p
+              LEFT JOIN 
+                Controle_agua a ON p.cod_plantacao = a.cod_plantacao
+              WHERE 
+                p.cod_plantacao IS NOT NULL 
+                AND a.hora_inicial IS NOT NULL 
+                AND a.hora_final IS NOT NULL 
+                AND a.quantidade_agua IS NOT NULL",
+                    connection);
 
-                // Criação do DataTable para armazenar os dados
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                // Atribuindo os dados ao DataGridView
-                tabela_Agua.DataSource = dataTable;
-
-                // Comando para inserção de dados na tabela Controle_agua
+                // Configurar o InsertCommand
                 SqlCommand insertAgua = new SqlCommand(
                     "INSERT INTO controle_agua (cod_controle, cod_plantacao, hora_inicial, hora_final, quantidade_agua) " +
-                    "VALUES (@cod_controle, @cod_plantacao, @hora_inicial, @hora_final, @quantidade_agua)", connection);
-
-                // Adicionando parâmetros ao comando de inserção
+                    "VALUES (@cod_controle, @cod_plantacao, @hora_inicial, @hora_final, @quantidade_agua)",
+                    connection);
                 insertAgua.Parameters.Add("@cod_controle", SqlDbType.Int, 0, "cod_controle");
                 insertAgua.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 insertAgua.Parameters.Add("@hora_inicial", SqlDbType.Time, 0, "hora_inicial");
                 insertAgua.Parameters.Add("@hora_final", SqlDbType.Time, 0, "hora_final");
                 insertAgua.Parameters.Add("@quantidade_agua", SqlDbType.Int, 0, "quantidade_agua");
+                adapter.InsertCommand = insertAgua;
 
-                // Comando para atualização de dados na tabela Controle_agua
+                // Configurar o UpdateCommand
                 SqlCommand updateCommand = new SqlCommand(
                     "UPDATE Controle_agua " +
                     "SET cod_plantacao = @cod_plantacao, hora_inicial = @hora_inicial, hora_final = @hora_final, quantidade_agua = @quantidade_agua " +
-                    "WHERE cod_controle = @cod_controle", connection);
-
-                // Adiciona os parâmetros ao comando de atualização
+                    "WHERE cod_controle = @cod_controle",
+                    connection);
                 updateCommand.Parameters.Add("@cod_plantacao", SqlDbType.Int, 0, "cod_plantacao");
                 updateCommand.Parameters.Add("@hora_inicial", SqlDbType.Time, 0, "hora_inicial");
                 updateCommand.Parameters.Add("@hora_final", SqlDbType.Time, 0, "hora_final");
                 updateCommand.Parameters.Add("@quantidade_agua", SqlDbType.Int, 0, "quantidade_agua");
                 updateCommand.Parameters.Add("@cod_controle", SqlDbType.Int, 0, "cod_controle");
+                adapter.UpdateCommand = updateCommand;
 
-                // Percorrer as linhas do DataGridView e fazer a inserção ou atualização conforme necessário
-                foreach (DataGridViewRow row in tabela_Agua.Rows)
-                {
-                    if (row.IsNewRow) continue;  // Ignorar a linha nova que o DataGridView adiciona automaticamente
-
-                    // Preencher os parâmetros com os valores da linha
-                    int codCont = Convert.ToInt32(row.Cells["cod_controle"].Value);
-                    int codPlant = Convert.ToInt32(row.Cells["cod_plantacao"].Value);  // Aqui é o cod_plantacao que será armazenado
-                    TimeSpan horaInicial = (TimeSpan)row.Cells["hora_inicial"].Value;
-                    TimeSpan horaFinal = (TimeSpan)row.Cells["hora_final"].Value;
-                    int qtdAgua = Convert.ToInt32(row.Cells["quantidade_agua"].Value);
-
-                    // Se o cod_controle for zero (novo), insira
-                    if (codCont == 0)
-                    {
-                        insertAgua.Parameters["@cod_controle"].Value = codCont;
-                        insertAgua.Parameters["@cod_plantacao"].Value = codPlant;  // Enviar o valor do cod_plantacao
-                        insertAgua.Parameters["@hora_inicial"].Value = horaInicial;
-                        insertAgua.Parameters["@hora_final"].Value = horaFinal;
-                        insertAgua.Parameters["@quantidade_agua"].Value = qtdAgua;
-
-                        // Executa a inserção
-                        insertAgua.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        // Se o cod_controle já existir, faça a atualização
-                        updateCommand.Parameters["@cod_controle"].Value = codCont;
-                        updateCommand.Parameters["@cod_plantacao"].Value = codPlant;  // Enviar o valor do cod_plantacao
-                        updateCommand.Parameters["@hora_inicial"].Value = horaInicial;
-                        updateCommand.Parameters["@hora_final"].Value = horaFinal;
-                        updateCommand.Parameters["@quantidade_agua"].Value = qtdAgua;
-
-                        // Executa a atualização
-                        updateCommand.ExecuteNonQuery();  // Execute o update para atualizar o banco
-                    }
-                }
-
-                // Atualiza o DataTable após inserção ou atualização
+                // Preencher o DataTable
                 controle_aguaTable = new DataTable();
                 adapter.Fill(controle_aguaTable);
-                tabela_Agua.AllowUserToAddRows = false;  // Desativa a opção de adicionar novas linhas no DataGridView
-
+                tabela_Agua.DataSource = controle_aguaTable;
+                tabela_Agua.AllowUserToAddRows = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
+                MessageBox.Show("Erro ao carregar dados: " + ex.Message);
             }
         }
 
 
-        private int GetRandomControleAgua()
+        private void ConfigureDataGridView()
         {
-            Random random = new Random();
-            int newCode;
-            do
-            {
-                newCode = random.Next(1, 999);
 
-            } while (DoesCodeExist(newCode));
-            return newCode;
-
-        }
-
-        private bool DoesCodeExist(int cod_controle)
-        {
-            using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
-            {
-                try
-                {
-                    connection.Open();
-                    // Altere a consulta para verificar a tabela e coluna corretas (Controle_pragas_doencas)
-                    SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Controle_Agua WHERE cod_controle= @cod_controle", connection);
-                    command.Parameters.AddWithValue("@cod_controle", cod_controle);
-                    int count = (int)command.ExecuteScalar();
-
-                    return count > 0; // Retorna true se o código já existe, false caso contrário
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao verificar código: " + ex.Message);
-                    return true; // Retorna true para evitar a inserção em caso de erro
-                }
-            }
-        }
-
-        private void ConfiguredataGridView()
-        {
-            // Atribui os dados ao DataGridView
             tabela_Agua.DataSource = controle_aguaTable;
-
-
-            // Desabilita a geração automática de colunas e limpa as colunas existentes
             tabela_Agua.AutoGenerateColumns = false;
             tabela_Agua.Columns.Clear();
 
-            // Adiciona a coluna "cod_controle" como uma coluna de texto
+
             tabela_Agua.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "cod_controle",
@@ -697,7 +607,7 @@ namespace DashboardForm
                 DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
             });
 
-            // Adiciona a coluna "tipo_plantacao" como uma coluna ComboBox
+            // Tipo de Plantação (ComboBox)
             DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn
             {
                 Name = "tipo_plantacao",
@@ -706,9 +616,8 @@ namespace DashboardForm
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
                 DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
             };
-
-            // Adiciona o ComboBox na tabela
             tabela_Agua.Columns.Add(comboColumn);
+
 
             // Configura outras colunas conforme necessário, como hora_inicial, hora_final e quantidade_agua
             tabela_Agua.Columns.Add(new DataGridViewTextBoxColumn
@@ -744,8 +653,6 @@ namespace DashboardForm
             }
         }
 
-
-
         private void CarregarTiposParaComboBox()
         {
             DataTable plantacaoTable = new DataTable();
@@ -767,30 +674,40 @@ namespace DashboardForm
 
 
         }
-
-
-        private void CarregarTiposParaComboBox2()
+        private int GetRandomControleAgua()
         {
-            DataTable plantacaoTable = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            Random random = new Random();
+            int newCode;
+            do
             {
-                string query = "SELECT cod_plantacao, tipo_plantacao FROM Plantacao";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.Fill(plantacaoTable); // Preenche os dados da tabela com a consulta
-            }
+                newCode = random.Next(1, 999);
 
-
-
-            // Configura o ComboBox para a coluna "tipo_plantacao" da tabela_Luz
-            DataGridViewComboBoxColumn comboColumn1 = (DataGridViewComboBoxColumn)tabela_Luz.Columns["tipo_plantacao"];
-            comboColumn1.DataSource = plantacaoTable;
-            comboColumn1.DisplayMember = "tipo_plantacao"; // O que será exibido no ComboBox
-            comboColumn1.ValueMember = "cod_plantacao";   // O valor real armazenado (cod_plantacao)
+            } while (DoesCodeExist(newCode));
+            return newCode;
         }
 
 
+        private bool DoesCodeExist(int codControle)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MENDONÇA\\SQLEXPRESS;Database=fazenda_urbana_Urban_Green_pim4;Trusted_Connection=True;TrustServerCertificate=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    // Altere a consulta para verificar a tabela e coluna corretas (Controle_pragas_doencas)
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Controle_Agua WHERE cod_controle = @cod_controle", connection);
+                    command.Parameters.AddWithValue("@cod_controle", codControle);
+                    int count = (int)command.ExecuteScalar();
 
+                    return count > 0; // Retorna true se o código já existe, false caso contrário
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao verificar código: " + ex.Message);
+                    return true; // Retorna true para evitar a inserção em caso de erro
+                }
+            }
+        }
 
         private void btn_addRow_Click(object sender, EventArgs e)
         {
@@ -815,39 +732,6 @@ namespace DashboardForm
 
             // Adiciona a nova linha ao DataTable
             controle_aguaTable.Rows.Add(newRow);
-        }
-
-        private void btn_linha_luz_Click(object sender, EventArgs e)
-        {
-            if (isEditingRow)
-            {
-                MessageBox.Show("Finalize a edição da linha atual antes de adicionar uma nova.");
-                return;
-            }
-
-            // Gera um novo código para a luz
-            int NovoCodigo = GetRandomControleLuz();
-
-            // Cria uma nova linha na tabela de controle de luz
-            DataRow newRow = controle_luztable.NewRow();
-
-            // Preenche os valores iniciais para a nova linha
-            newRow["cod_luz"] = NovoCodigo;
-            newRow["tipo_plantacao"] = DBNull.Value; // Código da plantação não definido inicialmente
-            newRow["hora_inicial"] = DBNull.Value; // Hora inicial não definida
-            newRow["hora_final"] = DBNull.Value; // Hora final não definida
-            newRow["duracao_luz"] = DBNull.Value; // Duração da luz não definida
-            newRow["intensidade_luz"] = DBNull.Value; // Intensidade padrão
-            newRow["data_inicial"] = DBNull.Value; // Data inicial não definida
-            newRow["data_final"] = DBNull.Value; // Data final não definida
-            newRow["fonte_luz"] = DBNull.Value; // Fonte de luz não definida
-            newRow["tipo_luz"] = DBNull.Value; // Tipo de luz não definido
-
-            // Adiciona a nova linha à tabela
-            controle_luztable.Rows.Add(newRow);
-
-            // Atualiza a exibição da tabela para refletir a nova linha
-
         }
 
         private bool ValidarLinhaAgua(DataRow linha)
@@ -878,7 +762,24 @@ namespace DashboardForm
             // Se tudo estiver preenchido corretamente
             return true;
         }
+        private void RecarregarDados()
+        {
+            try
+            {
+                // Limpa o DataTable para evitar duplicação de dados
+                controle_aguaTable.Clear();
 
+                // Preenche novamente o DataTable com os dados atualizados do banco
+                adapter.Fill(controle_aguaTable);
+
+                // Atualiza os dados na tabela
+                tabela_Agua.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao recarregar dados: " + ex.Message);
+            }
+        }
 
         private void salvar_Click(object sender, EventArgs e)
         {
@@ -888,12 +789,11 @@ namespace DashboardForm
                 // Verificar as linhas antes de salvar
                 foreach (DataRow linha in controle_aguaTable.Rows)
                 {
-                    // Verifica se a linha foi adicionada ou modificada
                     if (linha.RowState == DataRowState.Added || linha.RowState == DataRowState.Modified)
                     {
                         if (!ValidarLinhaAgua(linha))
                         {
-                            MessageBox.Show("Por favor, preencha todos os campos obrigatórios.");
+                            MessageBox.Show("Por favor, preenFha todos os campos obrigatórios.");
                             return; // Interrompe se a linha não passar na validação
                         }
                     }
@@ -905,26 +805,16 @@ namespace DashboardForm
                     {
                         connection.Open();
 
-                        // Criar o SqlDataAdapter com a consulta SELECT
-                        SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Controle_agua", connection);
+                        // Atualiza os dados na tabela de pragas/doenças usando o DataAdapter
+                        adapter.Update(controle_aguaTable); // Insere ou atualiza as linhas alteradas no banco
 
-                        // Criar o SqlCommandBuilder para gerar os comandos INSERT/UPDATE/DELETE automaticamente
-                        SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
+                        MessageBox.Show("Dados de pragas/doenças salvos com sucesso!");
 
-                        // Atualiza as linhas no banco de dados (inserindo ou atualizando conforme necessário)
-                        adapter.Update(controle_aguaTable);  // 'controle_aguaTable' é o seu DataTable
-
-                        // Exibe mensagem de sucesso
-                        MessageBox.Show("Dados de controle de água salvos com sucesso!");
-
-                        // Confirma as alterações no DataTable
+                        // Confirmar as alterações no DataTable
                         controle_aguaTable.AcceptChanges();
 
-                        // Atualiza o DataGridView para refletir as mudanças
-                        tabela_Agua.Refresh();
-
-                        // Aqui você pode adicionar a chamada para atualizar os gráficos, se necessário
-                        // AtualizarGraficos();
+                        tabela_Agua.Refresh(); // Atualizar exibição no DataGridView
+                        AtualizarGraficos();
                     }
                     catch (Exception ex)
                     {
@@ -938,7 +828,6 @@ namespace DashboardForm
                 MessageBox.Show("Nenhuma alteração para salvar.");
             }
         }
-
 
         private void loadControleLuz()
         {
@@ -960,24 +849,23 @@ namespace DashboardForm
                 // Definir o SqlDataAdapter e a consulta
                 SqlDataAdapter adapter = new SqlDataAdapter(
                     @"SELECT 
-                p.cod_plantacao,
-                p.tipo_plantacao,
-                l.cod_luz,
-                l.hora_inicial,
-                l.hora_final,
-                l.duracao_luz,
-                l.intensidade_luz,
-                l.data_inicial,
-                l.data_final,
-                l.fonte_luz,
-                l.tipo_luz,
-                t.temperatura
-            FROM
-                plantacao p
-            LEFT JOIN
-                Controle_luz l ON p.cod_plantacao = l.cod_plantacao
-            LEFT JOIN
-                Controle_temperatura t ON p.cod_plantacao = t.cod_temperatura", connection);
+        p.cod_plantacao,
+        p.tipo_plantacao,
+        l.cod_luz,
+        l.hora_inicial,
+        l.hora_final,
+        l.duracao_luz,
+        l.intensidade_luz,
+        l.data_inicial,
+        l.data_final,
+        l.fonte_luz,
+        l.tipo_luz,
+        l.temperatura
+    FROM
+        plantacao p
+    LEFT JOIN
+        Controle_luz l ON p.cod_plantacao = l.cod_plantacao
+   ", connection);
 
 
 
@@ -994,9 +882,9 @@ namespace DashboardForm
                 // Definir o comando de inserção
                 SqlCommand insertLuz = new SqlCommand(
                     @"INSERT INTO Controle_Luz 
-            (cod_luz, cod_plantacao, hora_inicial, hora_final, duracao_luz, intensidade_luz, data_inicial, data_final, fonte_luz, tipo_luz) 
-            VALUES 
-            (@CodLuz, @CodPlantacao, @HoraInicial, @HoraFinal, @Duracao_luz, @Intensidade_luz, @DataInicial, @DataFinal, @FonteLuz, @TipoLuz)", connection);
+    (cod_luz, cod_plantacao, hora_inicial, hora_final, duracao_luz, intensidade_luz, data_inicial, data_final, fonte_luz, tipo_luz,temperatura) 
+    VALUES 
+    (@CodLuz, @CodPlantacao, @HoraInicial, @HoraFinal, @Duracao_luz, @Intensidade_luz, @DataInicial, @DataFinal, @FonteLuz, @TipoLuz, @temperatura)", connection);
 
                 // Adicionar os parâmetros do comando de inserção
                 insertLuz.Parameters.Add("@CodLuz", SqlDbType.Int);
@@ -1009,22 +897,24 @@ namespace DashboardForm
                 insertLuz.Parameters.Add("@DataFinal", SqlDbType.DateTime);
                 insertLuz.Parameters.Add("@FonteLuz", SqlDbType.NVarChar);
                 insertLuz.Parameters.Add("@TipoLuz", SqlDbType.NVarChar);
+                insertLuz.Parameters.Add("@temperatura", SqlDbType.Int);
 
                 // Definir o comando de atualização
                 SqlCommand updateLuz = new SqlCommand(
                     @"UPDATE Controle_Luz
-            SET 
-                cod_plantacao = @CodPlantacao,
-                hora_inicial = @HoraInicial,
-                hora_final = @HoraFinal,
-                duracao = @Duracao_luz,
-                intensidade_luz = @Intensidade_luz,
-                data_inicial = @DataInicial,
-                data_final = @DataFinal,
-                fonte_luz = @FonteLuz,
-                tipo_luz = @TipoLuz
-            WHERE 
-                cod_luz = @CodLuz", connection);
+    SET 
+        cod_plantacao = @CodPlantacao,
+        hora_inicial = @HoraInicial,
+        hora_final = @HoraFinal,
+        duracao = @Duracao_luz,
+        intensidade_luz = @Intensidade_luz,
+        data_inicial = @DataInicial,
+        data_final = @DataFinal,
+        fonte_luz = @FonteLuz,
+        tipo_luz = @TipoLuz
+        temperatura = @temperatura,
+    WHERE 
+        cod_luz = @CodLuz", connection);
 
                 // Adicionar os parâmetros do comando de atualização
                 updateLuz.Parameters.Add("@CodLuz", SqlDbType.Int);
@@ -1037,7 +927,7 @@ namespace DashboardForm
                 updateLuz.Parameters.Add("@DataFinal", SqlDbType.DateTime);
                 updateLuz.Parameters.Add("@FonteLuz", SqlDbType.NVarChar);
                 updateLuz.Parameters.Add("@TipoLuz", SqlDbType.NVarChar);
-
+                updateLuz.Parameters.Add("@temperatura", SqlDbType.Int);
                 // Iterar pelas linhas para atualizar ou inserir dados
                 foreach (DataGridViewRow row in tabela_Luz.Rows)
                 {
@@ -1047,7 +937,7 @@ namespace DashboardForm
                     int cod_Luz = Convert.ToInt32(row.Cells["cod_luz"].Value);
                     int codPlant = Convert.ToInt32(row.Cells["cod_plantacao"].Value);
                     int intensidade = row.Cells["intensidade_luz"].Value != DBNull.Value ? Convert.ToInt32(row.Cells["intensidade_luz"].Value) : 0;
-
+                    int temperatura = row.Cells["temperatura"].Value != DBNull.Value ? Convert.ToInt32(row.Cells["temperatura"].Value) : 0;
                     // Verificação de DBNull para os campos TimeSpan
                     TimeSpan? horaInicial = row.Cells["hora_inicial"].Value != DBNull.Value ? (TimeSpan?)row.Cells["hora_inicial"].Value : null;
                     TimeSpan? horaFinal = row.Cells["hora_final"].Value != DBNull.Value ? (TimeSpan?)row.Cells["hora_final"].Value : null;
@@ -1074,6 +964,7 @@ namespace DashboardForm
                         insertLuz.Parameters["@data_final"].Value = dataFinal ?? (object)DBNull.Value;
                         insertLuz.Parameters["@fonte_luz"].Value = fonteLuz ?? (object)DBNull.Value;
                         insertLuz.Parameters["@tipo_luz"].Value = tipoLuz ?? (object)DBNull.Value;
+                        insertLuz.Parameters["@temperatura"].Value = temperatura;
 
                         // Executa a inserção
                         insertLuz.ExecuteNonQuery();
@@ -1091,6 +982,7 @@ namespace DashboardForm
                         updateLuz.Parameters["@data_final"].Value = dataFinal ?? (object)DBNull.Value;
                         updateLuz.Parameters["@fonte_luz"].Value = fonteLuz ?? (object)DBNull.Value;
                         updateLuz.Parameters["@tipo_luz"].Value = tipoLuz ?? (object)DBNull.Value;
+                        updateLuz.Parameters["@temperatura"].Value = temperatura;
 
                         // Executa a atualização
                         updateLuz.ExecuteNonQuery();
@@ -1201,7 +1093,7 @@ namespace DashboardForm
             {
                 DataPropertyName = "fonte_luz",
                 HeaderText = "Fonte de Luz",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleLeft }
+                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
             });
 
             // Coluna: Tipo de Luz
@@ -1209,7 +1101,14 @@ namespace DashboardForm
             {
                 DataPropertyName = "tipo_luz",
                 HeaderText = "Tipo de Luz",
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleLeft }
+                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+            });
+
+            tabela_Luz.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "temperatura",
+                HeaderText = "Temperatura",
+                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
             });
             foreach (DataGridViewColumn column in tabela_Luz.Columns)
             {
@@ -1220,7 +1119,25 @@ namespace DashboardForm
 
         }
 
+        private void CarregarTiposParaComboBox2()
+        {
+            DataTable plantacaoTable = new DataTable();
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT cod_plantacao, tipo_plantacao FROM Plantacao";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(plantacaoTable); // Preenche os dados da tabela com a consulta
+            }
+
+
+
+            // Configura o ComboBox para a coluna "tipo_plantacao" da tabela_Luz
+            DataGridViewComboBoxColumn comboColumn1 = (DataGridViewComboBoxColumn)tabela_Luz.Columns["tipo_plantacao"];
+            comboColumn1.DataSource = plantacaoTable;
+            comboColumn1.DisplayMember = "tipo_plantacao"; // O que será exibido no ComboBox
+            comboColumn1.ValueMember = "cod_plantacao";   // O valor real armazenado (cod_plantacao)
+        }
         private int GetRandomControleLuz()
         {
             Random rad = new Random();
@@ -1259,6 +1176,38 @@ namespace DashboardForm
             }
         }
 
+        private void btn_linha_luz_Click(object sender, EventArgs e)
+        {
+            if (isEditingRow)
+            {
+                MessageBox.Show("Finalize a edição da linha atual antes de adicionar uma nova.");
+                return;
+            }
+
+            // Gera um novo código para a luz
+            int NovoCodigo = GetRandomControleLuz();
+
+            // Cria uma nova linha na tabela de controle de luz
+            DataRow newRow = controle_luztable.NewRow();
+
+            // Preenche os valores iniciais para a nova linha
+            newRow["cod_luz"] = NovoCodigo;
+            newRow["tipo_plantacao"] = DBNull.Value; // Código da plantação não definido inicialmente
+            newRow["hora_inicial"] = DBNull.Value; // Hora inicial não definida
+            newRow["hora_final"] = DBNull.Value; // Hora final não definida
+            newRow["duracao_luz"] = DBNull.Value; // Duração da luz não definida
+            newRow["intensidade_luz"] = DBNull.Value; // Intensidade padrão
+            newRow["data_inicial"] = DBNull.Value; // Data inicial não definida
+            newRow["data_final"] = DBNull.Value; // Data final não definida
+            newRow["fonte_luz"] = DBNull.Value; // Fonte de luz não definida
+            newRow["tipo_luz"] = DBNull.Value; // Tipo de luz não definido
+
+            // Adiciona a nova linha à tabela
+            controle_luztable.Rows.Add(newRow);
+
+            // Atualiza a exibição da tabela para refletir a nova linha
+
+        }
 
 
         private void inserirDadosLuz_Click(object sender, EventArgs e)
@@ -1279,6 +1228,7 @@ namespace DashboardForm
                         }
                     }
                 }
+
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -1305,7 +1255,7 @@ namespace DashboardForm
                         tabela_Luz.Refresh();
 
                         // Aqui você pode adicionar a chamada para atualizar os gráficos, se necessário
-                        // AtualizarGraficos();
+                        AtualizarGraficos();
                     }
                     catch (Exception ex)
                     {
@@ -1321,6 +1271,8 @@ namespace DashboardForm
 
 
         }
+
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             EstoqueForm estoqueForm = new EstoqueForm();
@@ -1488,7 +1440,7 @@ namespace DashboardForm
             saudeForm.Show();
         }
 
-        
+
 
 
         private bool isEditingRow = false;
