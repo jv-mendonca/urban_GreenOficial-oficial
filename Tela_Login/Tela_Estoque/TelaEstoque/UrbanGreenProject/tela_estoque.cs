@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
 using DashboardForm;
 using Microsoft.Data.SqlClient;
 using Tela_Cultivo;
 using Tela_Login;
+using Tela_Login.tela_relatorio;
 using Tela_Saude2;
 
 namespace UrbanGreenProject
@@ -614,7 +616,9 @@ namespace UrbanGreenProject
 
         private void btn_relatorio_Click(object sender, EventArgs e)
         {
-
+            telaRelatorio telaRelatorio = new telaRelatorio();
+            this.Hide();
+            telaRelatorio.Show();
         }
 
         private void BarraPesquisa_TextChanged(object sender, EventArgs e)
@@ -727,6 +731,39 @@ namespace UrbanGreenProject
             telaLogin.Show();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Caminho do arquivo PDF
+                string caminhoPdf = @"C:\Users\joaok\OneDrive\Downloads\Manual do Software.pdf";
+
+                // Verifica se o arquivo existe
+                if (File.Exists(caminhoPdf))
+                {
+                    // Cria um novo processo para abrir o PDF no visualizador padrão do sistema
+                    ProcessStartInfo startInfo = new ProcessStartInfo()
+                    {
+                        FileName = caminhoPdf,
+                        UseShellExecute = true // Usar o shell do sistema para abrir o arquivo com o programa padrão
+                    };
+                    Process.Start(startInfo);
+                }
+                else
+                {
+                    MessageBox.Show("O arquivo PDF não foi encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar abrir o arquivo PDF: " + ex.Message);
+            }
+        }
+
+
     }
+
 }
+
 

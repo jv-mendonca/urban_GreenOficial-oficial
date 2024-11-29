@@ -50,7 +50,6 @@
             LabelMensagemErro = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel1 = new Panel();
             linkLabel1 = new LinkLabel();
-            checkboxLembrarSenha = new Guna.UI2.WinForms.Guna2CheckBox();
             labelLogin = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -247,7 +246,6 @@
             // panel1
             // 
             panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(checkboxLembrarSenha);
             panel1.Location = new Point(44, 308);
             panel1.Name = "panel1";
             panel1.Size = new Size(319, 30);
@@ -268,28 +266,6 @@
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Esqueceu a senha?";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
-            // 
-            // checkboxLembrarSenha
-            // 
-            checkboxLembrarSenha.AutoSize = true;
-            checkboxLembrarSenha.BackColor = Color.Transparent;
-            checkboxLembrarSenha.CheckedState.BorderColor = Color.FromArgb(0, 192, 0);
-            checkboxLembrarSenha.CheckedState.BorderRadius = 1;
-            checkboxLembrarSenha.CheckedState.BorderThickness = 0;
-            checkboxLembrarSenha.CheckedState.FillColor = Color.FromArgb(0, 192, 0);
-            checkboxLembrarSenha.Cursor = Cursors.Hand;
-            checkboxLembrarSenha.Font = new Font("Segoe UI", 10F);
-            checkboxLembrarSenha.ForeColor = Color.White;
-            checkboxLembrarSenha.Location = new Point(2, 4);
-            checkboxLembrarSenha.Name = "checkboxLembrarSenha";
-            checkboxLembrarSenha.Size = new Size(79, 23);
-            checkboxLembrarSenha.TabIndex = 10;
-            checkboxLembrarSenha.Text = "Lembrar";
-            checkboxLembrarSenha.UncheckedState.BorderColor = Color.White;
-            checkboxLembrarSenha.UncheckedState.BorderRadius = 0;
-            checkboxLembrarSenha.UncheckedState.BorderThickness = 0;
-            checkboxLembrarSenha.UncheckedState.FillColor = Color.White;
-            checkboxLembrarSenha.UseVisualStyleBackColor = false;
             // 
             // labelLogin
             // 
@@ -660,7 +636,6 @@
         private Guna.UI2.WinForms.Guna2Panel CardLogin;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelTexto;
         private LinkLabel linkLabel1;
-        private Guna.UI2.WinForms.Guna2CheckBox checkboxLembrarSenha;
         private Panel panel1;
         private Label labelLogin;
         private Label label2;

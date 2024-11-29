@@ -34,6 +34,9 @@
     <Compile Update="Tela_Inicial\DashboardForm\DashboardForm\DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="tela_relatorio\telaRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="tela_saude_02\Tela_Saude2\telaSaude.cs">
       <SubType>Form</SubType>
     </Compile>

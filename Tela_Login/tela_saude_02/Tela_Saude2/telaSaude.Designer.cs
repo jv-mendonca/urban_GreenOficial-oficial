@@ -99,7 +99,6 @@
             label31 = new Label();
             pictureBox6 = new PictureBox();
             label35 = new Label();
-            label32 = new Label();
             guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             pictureBox10 = new PictureBox();
             guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
@@ -109,13 +108,9 @@
             button4 = new Button();
             button2 = new Button();
             btn_saude = new Button();
-            pictureBox7 = new PictureBox();
-            btn_monitoramento = new Button();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             pictureBox4 = new PictureBox();
             btn_newLine_Doenca = new Guna.UI2.WinForms.Guna2GradientButton();
-            pictureBox18 = new PictureBox();
-            pictureBox17 = new PictureBox();
             panel26 = new Panel();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             panel3.SuspendLayout();
@@ -145,10 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel26.SuspendLayout();
             guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -569,7 +561,6 @@
             panel2.Controls.Add(label31);
             panel2.Controls.Add(pictureBox6);
             panel2.Controls.Add(label35);
-            panel2.Controls.Add(label32);
             panel2.Controls.Add(guna2Separator3);
             panel2.Controls.Add(pictureBox10);
             panel2.Controls.Add(guna2Separator2);
@@ -579,8 +570,6 @@
             panel2.Controls.Add(button4);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(btn_saude);
-            panel2.Controls.Add(pictureBox7);
-            panel2.Controls.Add(btn_monitoramento);
             panel2.Location = new Point(0, 30);
             panel2.Name = "panel2";
             panel2.Size = new Size(169, 681);
@@ -617,6 +606,7 @@
             button1.Size = new Size(144, 35);
             button1.TabIndex = 66;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox11
             // 
@@ -668,7 +658,7 @@
             pictureBox9.BackColor = Color.Transparent;
             pictureBox9.Cursor = Cursors.Hand;
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(21, 309);
+            pictureBox9.Location = new Point(18, 267);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(20, 20);
             pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
@@ -682,7 +672,7 @@
             label34.Cursor = Cursors.Hand;
             label34.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label34.ForeColor = Color.Gray;
-            label34.Location = new Point(51, 312);
+            label34.Location = new Point(48, 270);
             label34.Name = "label34";
             label34.Size = new Size(50, 19);
             label34.TabIndex = 60;
@@ -695,7 +685,7 @@
             label33.Cursor = Cursors.Hand;
             label33.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label33.ForeColor = Color.Gray;
-            label33.Location = new Point(45, 272);
+            label33.Location = new Point(42, 230);
             label33.Name = "label33";
             label33.Size = new Size(61, 19);
             label33.TabIndex = 58;
@@ -726,7 +716,7 @@
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Cursor = Cursors.Hand;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(19, 272);
+            pictureBox8.Location = new Point(16, 230);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(20, 20);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
@@ -765,23 +755,11 @@
             label35.Cursor = Cursors.Hand;
             label35.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label35.ForeColor = Color.Gray;
-            label35.Location = new Point(45, 352);
+            label35.Location = new Point(42, 310);
             label35.Name = "label35";
             label35.Size = new Size(77, 19);
             label35.TabIndex = 42;
             label35.Text = "Relatórios";
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Cursor = Cursors.Hand;
-            label32.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label32.ForeColor = Color.Gray;
-            label32.Location = new Point(39, 229);
-            label32.Name = "label32";
-            label32.Size = new Size(114, 19);
-            label32.TabIndex = 47;
-            label32.Text = "Monitoramento";
             // 
             // guna2Separator3
             // 
@@ -795,7 +773,7 @@
             pictureBox10.BackColor = Color.Transparent;
             pictureBox10.Cursor = Cursors.Hand;
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(19, 350);
+            pictureBox10.Location = new Point(16, 308);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(20, 20);
             pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
@@ -811,7 +789,7 @@
             // 
             // btn_estoque
             // 
-            btn_estoque.Location = new Point(12, 263);
+            btn_estoque.Location = new Point(9, 221);
             btn_estoque.Name = "btn_estoque";
             btn_estoque.Size = new Size(144, 35);
             btn_estoque.TabIndex = 49;
@@ -827,7 +805,7 @@
             // 
             // btn_relatorio
             // 
-            btn_relatorio.Location = new Point(12, 344);
+            btn_relatorio.Location = new Point(9, 302);
             btn_relatorio.Name = "btn_relatorio";
             btn_relatorio.Size = new Size(144, 35);
             btn_relatorio.TabIndex = 54;
@@ -860,34 +838,12 @@
             // 
             // btn_saude
             // 
-            btn_saude.Location = new Point(15, 304);
+            btn_saude.Location = new Point(12, 262);
             btn_saude.Name = "btn_saude";
             btn_saude.Size = new Size(144, 35);
             btn_saude.TabIndex = 51;
             btn_saude.UseVisualStyleBackColor = true;
             btn_saude.Click += btn_saude_Click;
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.BackColor = Color.Transparent;
-            pictureBox7.Cursor = Cursors.Hand;
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(16, 229);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(20, 20);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 45;
-            pictureBox7.TabStop = false;
-            // 
-            // btn_monitoramento
-            // 
-            btn_monitoramento.BackColor = Color.Transparent;
-            btn_monitoramento.Location = new Point(12, 222);
-            btn_monitoramento.Name = "btn_monitoramento";
-            btn_monitoramento.Size = new Size(144, 35);
-            btn_monitoramento.TabIndex = 53;
-            btn_monitoramento.UseVisualStyleBackColor = false;
-            btn_monitoramento.Click += btn_monitoramento_Click;
             // 
             // BarraPesquisa
             // 
@@ -942,28 +898,6 @@
             btn_newLine_Doenca.Text = "+ NOVO DOENÇAS";
             btn_newLine_Doenca.Click += btn_newLine_Doenca_Click_1;
             // 
-            // pictureBox18
-            // 
-            pictureBox18.Cursor = Cursors.Hand;
-            pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(788, 18);
-            pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(20, 20);
-            pictureBox18.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox18.TabIndex = 9;
-            pictureBox18.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            pictureBox17.Cursor = Cursors.Hand;
-            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
-            pictureBox17.Location = new Point(823, 18);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(20, 20);
-            pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox17.TabIndex = 8;
-            pictureBox17.TabStop = false;
-            // 
             // panel26
             // 
             panel26.BackColor = Color.White;
@@ -977,8 +911,6 @@
             // 
             guna2GradientPanel1.BackColor = Color.Transparent;
             guna2GradientPanel1.Controls.Add(btn_newLine_Doenca);
-            guna2GradientPanel1.Controls.Add(pictureBox18);
-            guna2GradientPanel1.Controls.Add(pictureBox17);
             guna2GradientPanel1.Controls.Add(panel26);
             guna2GradientPanel1.Controls.Add(BarraPesquisa);
             customizableEdges18.BottomRight = false;
@@ -1038,10 +970,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel26.ResumeLayout(false);
             guna2GradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -1085,8 +1014,6 @@
         private Guna.UI2.WinForms.Guna2TextBox BarraPesquisa;
         private PictureBox pictureBox4;
         private Guna.UI2.WinForms.Guna2GradientButton btn_newLine_Doenca;
-        private PictureBox pictureBox18;
-        private PictureBox pictureBox17;
         private Panel panel26;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientButton btn_Adicionar;
@@ -1107,15 +1034,12 @@
         private Label label31;
         private PictureBox pictureBox6;
         private Label label35;
-        private Label label32;
         private PictureBox pictureBox10;
         private Button btn_estoque;
         private Button btn_relatorio;
         private Button button4;
         private Button button2;
         private Button btn_saude;
-        private PictureBox pictureBox7;
-        private Button btn_monitoramento;
         private Label label3;
         private PictureBox pictureBox3;
         private Button button1;

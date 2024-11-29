@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(telaCultivo));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pictureBox2 = new PictureBox();
             tabelaCultivo = new Guna.UI2.WinForms.Guna2DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
@@ -50,8 +50,6 @@
             vScrollBar1 = new VScrollBar();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             btn_NewCultivo = new Guna.UI2.WinForms.Guna2GradientButton();
-            pictureBox18 = new PictureBox();
-            pictureBox17 = new PictureBox();
             panel1 = new Panel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pictureBox15 = new PictureBox();
@@ -59,19 +57,22 @@
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             panel2 = new Panel();
+            label1 = new Label();
             label33 = new Label();
+            pictureBox3 = new PictureBox();
             pictureBox8 = new PictureBox();
+            btn_ajuda = new Button();
             label31 = new Label();
+            pictureBox11 = new PictureBox();
             pictureBox6 = new PictureBox();
+            label3 = new Label();
             label35 = new Label();
-            label32 = new Label();
+            tela_saida = new Button();
             pictureBox10 = new PictureBox();
             btn_estoque = new Button();
             btn_relatorio = new Button();
             button2 = new Button();
-            pictureBox7 = new PictureBox();
             guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
-            btn_monitoramento = new Button();
             guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             pictureBox5 = new PictureBox();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -84,32 +85,23 @@
             label29 = new Label();
             label2 = new Label();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            label1 = new Label();
-            pictureBox3 = new PictureBox();
-            button1 = new Button();
-            pictureBox11 = new PictureBox();
-            label3 = new Label();
-            tela_saida = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tabelaCultivo).BeginInit();
             guna2GradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             SuspendLayout();
             // 
             // pictureBox2
@@ -126,43 +118,43 @@
             // tabelaCultivo
             // 
             tabelaCultivo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            tabelaCultivo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(136, 203, 194);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(136, 203, 194);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            tabelaCultivo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            tabelaCultivo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(136, 203, 194);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(136, 203, 194);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            tabelaCultivo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             tabelaCultivo.ColumnHeadersHeight = 17;
             tabelaCultivo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             tabelaCultivo.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            tabelaCultivo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            tabelaCultivo.DefaultCellStyle = dataGridViewCellStyle3;
             tabelaCultivo.GridColor = Color.FromArgb(231, 229, 255);
             tabelaCultivo.Location = new Point(219, 211);
             tabelaCultivo.Name = "tabelaCultivo";
             tabelaCultivo.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            tabelaCultivo.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            tabelaCultivo.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             tabelaCultivo.RowHeadersVisible = false;
             tabelaCultivo.Size = new Size(987, 363);
             tabelaCultivo.TabIndex = 18;
@@ -219,25 +211,23 @@
             // 
             guna2GradientPanel1.BackColor = Color.White;
             guna2GradientPanel1.Controls.Add(btn_NewCultivo);
-            guna2GradientPanel1.Controls.Add(pictureBox18);
-            guna2GradientPanel1.Controls.Add(pictureBox17);
             guna2GradientPanel1.Controls.Add(panel1);
             guna2GradientPanel1.Controls.Add(panel26);
             guna2GradientPanel1.Controls.Add(BarraPesquisa);
-            customizableEdges13.BottomRight = false;
-            customizableEdges13.TopLeft = false;
-            guna2GradientPanel1.CustomizableEdges = customizableEdges13;
+            customizableEdges5.BottomRight = false;
+            customizableEdges5.TopLeft = false;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges5;
             guna2GradientPanel1.FillColor2 = Color.Transparent;
             guna2GradientPanel1.Location = new Point(-8, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2GradientPanel1.Size = new Size(1280, 68);
             guna2GradientPanel1.TabIndex = 17;
             // 
             // btn_NewCultivo
             // 
             btn_NewCultivo.BorderRadius = 4;
-            btn_NewCultivo.CustomizableEdges = customizableEdges9;
+            btn_NewCultivo.CustomizableEdges = customizableEdges1;
             btn_NewCultivo.DisabledState.BorderColor = Color.DarkGray;
             btn_NewCultivo.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_NewCultivo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -249,33 +239,11 @@
             btn_NewCultivo.ForeColor = Color.White;
             btn_NewCultivo.Location = new Point(1113, 18);
             btn_NewCultivo.Name = "btn_NewCultivo";
-            btn_NewCultivo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btn_NewCultivo.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btn_NewCultivo.Size = new Size(147, 34);
             btn_NewCultivo.TabIndex = 12;
             btn_NewCultivo.Text = "+ NOVO CULTIVO";
             btn_NewCultivo.Click += btn_NewCultivo_Click;
-            // 
-            // pictureBox18
-            // 
-            pictureBox18.Cursor = Cursors.Hand;
-            pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(1021, 32);
-            pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(20, 20);
-            pictureBox18.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox18.TabIndex = 9;
-            pictureBox18.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            pictureBox17.Cursor = Cursors.Hand;
-            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
-            pictureBox17.Location = new Point(1057, 32);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(20, 20);
-            pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox17.TabIndex = 8;
-            pictureBox17.TabStop = false;
             // 
             // panel1
             // 
@@ -330,7 +298,7 @@
             // BarraPesquisa
             // 
             BarraPesquisa.BorderRadius = 4;
-            BarraPesquisa.CustomizableEdges = customizableEdges11;
+            BarraPesquisa.CustomizableEdges = customizableEdges3;
             BarraPesquisa.DefaultText = "";
             BarraPesquisa.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             BarraPesquisa.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -344,7 +312,7 @@
             BarraPesquisa.PasswordChar = '\0';
             BarraPesquisa.PlaceholderText = "Pesquisar Produto";
             BarraPesquisa.SelectedText = "";
-            BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BarraPesquisa.Size = new Size(312, 36);
             BarraPesquisa.TabIndex = 0;
             BarraPesquisa.TextChanged += BarraPesquisa_TextChanged;
@@ -356,21 +324,18 @@
             panel2.Controls.Add(label33);
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox8);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btn_ajuda);
             panel2.Controls.Add(label31);
             panel2.Controls.Add(pictureBox11);
             panel2.Controls.Add(pictureBox6);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label35);
             panel2.Controls.Add(tela_saida);
-            panel2.Controls.Add(label32);
             panel2.Controls.Add(pictureBox10);
             panel2.Controls.Add(btn_estoque);
             panel2.Controls.Add(btn_relatorio);
             panel2.Controls.Add(button2);
-            panel2.Controls.Add(pictureBox7);
             panel2.Controls.Add(guna2Separator3);
-            panel2.Controls.Add(btn_monitoramento);
             panel2.Controls.Add(guna2Separator2);
             panel2.Controls.Add(pictureBox5);
             panel2.Controls.Add(guna2Separator1);
@@ -384,6 +349,18 @@
             panel2.TabIndex = 14;
             panel2.Paint += panel2_Paint;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Cursor = Cursors.Hand;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.ForeColor = Color.Gray;
+            label1.Location = new Point(45, 362);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 19);
+            label1.TabIndex = 22;
+            label1.Text = "Ajuda";
+            // 
             // label33
             // 
             label33.AutoSize = true;
@@ -391,23 +368,44 @@
             label33.Cursor = Cursors.Hand;
             label33.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label33.ForeColor = Color.Gray;
-            label33.Location = new Point(45, 163);
+            label33.Location = new Point(45, 116);
             label33.Name = "label33";
             label33.Size = new Size(61, 19);
             label33.TabIndex = 41;
             label33.Text = "Estoque";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Cursor = Cursors.Hand;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(19, 362);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 27;
+            pictureBox3.TabStop = false;
             // 
             // pictureBox8
             // 
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Cursor = Cursors.Hand;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(19, 163);
+            pictureBox8.Location = new Point(19, 116);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(20, 20);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox8.TabIndex = 40;
             pictureBox8.TabStop = false;
+            // 
+            // btn_ajuda
+            // 
+            btn_ajuda.Location = new Point(12, 355);
+            btn_ajuda.Name = "btn_ajuda";
+            btn_ajuda.Size = new Size(144, 35);
+            btn_ajuda.TabIndex = 26;
+            btn_ajuda.UseVisualStyleBackColor = true;
+            btn_ajuda.Click += btn_ajuda_Click;
             // 
             // label31
             // 
@@ -422,6 +420,18 @@
             label31.TabIndex = 39;
             label31.Text = "Cultivo";
             // 
+            // pictureBox11
+            // 
+            pictureBox11.BackColor = Color.Transparent;
+            pictureBox11.Cursor = Cursors.Hand;
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(19, 323);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(20, 20);
+            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox11.TabIndex = 25;
+            pictureBox11.TabStop = false;
+            // 
             // pictureBox6
             // 
             pictureBox6.BackColor = Color.Transparent;
@@ -434,6 +444,18 @@
             pictureBox6.TabIndex = 38;
             pictureBox6.TabStop = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.Hand;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(45, 324);
+            label3.Name = "label3";
+            label3.Size = new Size(35, 19);
+            label3.TabIndex = 23;
+            label3.Text = "Sair";
+            // 
             // label35
             // 
             label35.AutoSize = true;
@@ -441,30 +463,27 @@
             label35.Cursor = Cursors.Hand;
             label35.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label35.ForeColor = Color.Gray;
-            label35.Location = new Point(45, 243);
+            label35.Location = new Point(45, 196);
             label35.Name = "label35";
             label35.Size = new Size(77, 19);
             label35.TabIndex = 21;
             label35.Text = "Relatórios";
             // 
-            // label32
+            // tela_saida
             // 
-            label32.AutoSize = true;
-            label32.Cursor = Cursors.Hand;
-            label32.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label32.ForeColor = Color.Gray;
-            label32.Location = new Point(39, 120);
-            label32.Name = "label32";
-            label32.Size = new Size(114, 19);
-            label32.TabIndex = 30;
-            label32.Text = "Monitoramento";
+            tela_saida.Location = new Point(12, 314);
+            tela_saida.Name = "tela_saida";
+            tela_saida.Size = new Size(144, 35);
+            tela_saida.TabIndex = 24;
+            tela_saida.UseVisualStyleBackColor = true;
+            tela_saida.Click += tela_saida_Click;
             // 
             // pictureBox10
             // 
             pictureBox10.BackColor = Color.Transparent;
             pictureBox10.Cursor = Cursors.Hand;
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(19, 241);
+            pictureBox10.Location = new Point(19, 194);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(20, 20);
             pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
@@ -473,7 +492,7 @@
             // 
             // btn_estoque
             // 
-            btn_estoque.Location = new Point(12, 154);
+            btn_estoque.Location = new Point(12, 107);
             btn_estoque.Name = "btn_estoque";
             btn_estoque.Size = new Size(144, 35);
             btn_estoque.TabIndex = 32;
@@ -482,7 +501,7 @@
             // 
             // btn_relatorio
             // 
-            btn_relatorio.Location = new Point(12, 235);
+            btn_relatorio.Location = new Point(12, 188);
             btn_relatorio.Name = "btn_relatorio";
             btn_relatorio.Size = new Size(144, 35);
             btn_relatorio.TabIndex = 37;
@@ -496,34 +515,12 @@
             button2.Size = new Size(144, 35);
             button2.TabIndex = 33;
             // 
-            // pictureBox7
-            // 
-            pictureBox7.BackColor = Color.Transparent;
-            pictureBox7.Cursor = Cursors.Hand;
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(16, 120);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(20, 20);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 28;
-            pictureBox7.TabStop = false;
-            // 
             // guna2Separator3
             // 
             guna2Separator3.Location = new Point(12, 15);
             guna2Separator3.Name = "guna2Separator3";
             guna2Separator3.Size = new Size(149, 10);
             guna2Separator3.TabIndex = 7;
-            // 
-            // btn_monitoramento
-            // 
-            btn_monitoramento.BackColor = Color.Transparent;
-            btn_monitoramento.Location = new Point(12, 113);
-            btn_monitoramento.Name = "btn_monitoramento";
-            btn_monitoramento.Size = new Size(144, 35);
-            btn_monitoramento.TabIndex = 36;
-            btn_monitoramento.UseVisualStyleBackColor = false;
-            btn_monitoramento.Click += btn_monitoramento_Click;
             // 
             // guna2Separator2
             // 
@@ -574,7 +571,7 @@
             label34.Cursor = Cursors.Hand;
             label34.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label34.ForeColor = Color.Gray;
-            label34.Location = new Point(49, 202);
+            label34.Location = new Point(49, 155);
             label34.Name = "label34";
             label34.Size = new Size(50, 19);
             label34.TabIndex = 27;
@@ -585,7 +582,7 @@
             pictureBox9.BackColor = Color.Transparent;
             pictureBox9.Cursor = Cursors.Hand;
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(19, 199);
+            pictureBox9.Location = new Point(19, 152);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(20, 20);
             pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
@@ -594,7 +591,7 @@
             // 
             // btn_saude
             // 
-            btn_saude.Location = new Point(12, 194);
+            btn_saude.Location = new Point(12, 147);
             btn_saude.Name = "btn_saude";
             btn_saude.Size = new Size(144, 35);
             btn_saude.TabIndex = 34;
@@ -646,7 +643,7 @@
             // guna2GradientButton1
             // 
             guna2GradientButton1.BorderRadius = 4;
-            guna2GradientButton1.CustomizableEdges = customizableEdges15;
+            guna2GradientButton1.CustomizableEdges = customizableEdges7;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -658,76 +655,11 @@
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Location = new Point(733, 580);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientButton1.Size = new Size(147, 34);
             guna2GradientButton1.TabIndex = 20;
             guna2GradientButton1.Text = "+ NOVO CULTIVO";
             guna2GradientButton1.Click += guna2GradientButton1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.ForeColor = Color.Gray;
-            label1.Location = new Point(45, 362);
-            label1.Name = "label1";
-            label1.Size = new Size(48, 19);
-            label1.TabIndex = 22;
-            label1.Text = "Ajuda";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Cursor = Cursors.Hand;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(19, 362);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(20, 20);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 27;
-            pictureBox3.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(12, 355);
-            button1.Name = "button1";
-            button1.Size = new Size(144, 35);
-            button1.TabIndex = 26;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox11
-            // 
-            pictureBox11.BackColor = Color.Transparent;
-            pictureBox11.Cursor = Cursors.Hand;
-            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(19, 323);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(20, 20);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 25;
-            pictureBox11.TabStop = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.Hand;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label3.ForeColor = Color.Gray;
-            label3.Location = new Point(45, 324);
-            label3.Name = "label3";
-            label3.Size = new Size(35, 19);
-            label3.TabIndex = 23;
-            label3.Text = "Sair";
-            // 
-            // tela_saida
-            // 
-            tela_saida.Location = new Point(12, 314);
-            tela_saida.Name = "tela_saida";
-            tela_saida.Size = new Size(144, 35);
-            tela_saida.TabIndex = 24;
-            tela_saida.UseVisualStyleBackColor = true;
-            tela_saida.Click += tela_saida_Click;
             // 
             // telaCultivo
             // 
@@ -748,25 +680,22 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)tabelaCultivo).EndInit();
             guna2GradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
             panel26.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -778,8 +707,6 @@
         private VScrollBar vScrollBar1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientButton btn_NewCultivo;
-        private PictureBox pictureBox18;
-        private PictureBox pictureBox17;
         private Panel panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private PictureBox pictureBox15;
@@ -801,11 +728,8 @@
         private Label label2;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
         private Label label35;
-        private Label label32;
         private PictureBox pictureBox10;
         private Button btn_relatorio;
-        private PictureBox pictureBox7;
-        private Button btn_monitoramento;
         private PictureBox pictureBox5;
         private Button button4;
         private Label label34;
@@ -819,7 +743,7 @@
         private PictureBox pictureBox6;
         private Label label1;
         private PictureBox pictureBox3;
-        private Button button1;
+        private Button btn_ajuda;
         private PictureBox pictureBox11;
         private Label label3;
         private Button tela_saida;

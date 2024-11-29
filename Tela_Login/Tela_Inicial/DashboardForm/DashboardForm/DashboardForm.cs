@@ -2,6 +2,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Windows.Forms;
 using Tela_Cultivo;
 using tela_de_logins;
 using Tela_Login;
+using Tela_Login.tela_relatorio;
 using Tela_Saude2;
 using TheArtOfDevHtmlRenderer.Adapters;
 using UrbanGreenProject;
@@ -28,7 +30,7 @@ namespace DashboardForm
         private EstoqueForm estoqueForm; // Variável para armazenar a instância do EstoqueForm
         private List<Monitoramento> monitoramentos = new List<Monitoramento>();
         private string primeiroNome;
-        
+
         private DataTable controle_aguaTable;
         private DataTable controle_luztable;
         public Dashboard(string primeiroNome)
@@ -203,7 +205,7 @@ namespace DashboardForm
                 txtPrevisao.Text = "Indisponível";
                 txtSaude.Text = "Indefinido";
                 txtPorcentagemAguaGasta.Text = "Indefinido";
-                txtPorcetagemLuz.Text = "Indefinido";
+                txtPorcetangemLUZ.Text = "Indefinido";
                 txtTemperatura.Text = "Indefinido";
                 txt_lote.Text = "Indefinido";
 
@@ -213,7 +215,7 @@ namespace DashboardForm
                 CentralizarTexto(txtPrevisao, caixaPrevisao);
                 CentralizarTexto(txtPorcentagemAguaGasta, caixaAgua);
                 CentralizarTexto(txtTemperatura, caixaTemperatura);
-                CentralizarTexto(txtPorcetagemLuz, caixaLuz);
+                CentralizarTexto(txtPorcetangemLUZ, caixaLuz);
                 CentralizarTexto(txt_lote, caixa_lote);
             }
             else if (index >= 0 && index < monitoramentos.Count)
@@ -229,7 +231,7 @@ namespace DashboardForm
                 AtualizarSaude(monitoramento.Saude);
 
                 txtPorcentagemAguaGasta.Text = monitoramento.PorcentagemAguaGasta > 0 ? $"{monitoramento.PorcentagemAguaGasta:F2}%" : "Indefinido";
-                txtPorcetagemLuz.Text = monitoramento.PorcentagemLuzGasta > 0 ? $"{monitoramento.PorcentagemLuzGasta:F2}%" : "Indefinido";
+                txtPorcetangemLUZ.Text = monitoramento.PorcentagemLuzGasta > 0 ? $"{monitoramento.PorcentagemLuzGasta:F2}%" : "Indefinido";
                 txtTemperatura.Text = monitoramento.Temperatura > 0 ? $"{monitoramento.Temperatura:F2} °C" : "Indefinido";
                 txt_lote.Text = monitoramento.Lote ?? "Indefinido";
 
@@ -386,12 +388,12 @@ namespace DashboardForm
 
                 // Atualiza o gráfico com a porcentagem de luz da plantação atual
                 graficoLuz.Value = (int)porcentagemLuz; // Exibe a porcentagem no gráfico
-                txtPorcetagemLuz.Text = $"{graficoLuz.Value}%"; // Exibe a porcentagem no texto
+                txtPorcetangemLUZ.Text = $"{graficoLuz.Value}%"; // Exibe a porcentagem no texto
             }
             else
             {
                 graficoLuz.Value = 0;
-                txtPorcetagemLuz.Text = "0";
+                txtPorcetangemLUZ.Text = "0";
             }
 
             // Posiciona a saúde na parte superior (se necessário)
@@ -399,31 +401,19 @@ namespace DashboardForm
             PosicionarSaudeNaParteSuperior(titulografico2, caixaLuz); // Para o gráfico de luz
         }
 
-        private void btn_Proximo_Click_1(object sender, EventArgs e)
+
+
+
+
+
+
+        private void btn_Anterio_Click_1(object sender, EventArgs e)
         {
-            // Atualiza o índice para a próxima plantação
-            currentIndex = (currentIndex < monitoramentos.Count - 1) ? currentIndex + 1 : 0;  // Vai para a próxima ou volta para o início.
-
-            // Exibe o monitoramento da plantação atual
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : monitoramentos.Count - 1;
             ExibirMonitoramento(currentIndex);
-
-            // Atualiza os gráficos com os dados da nova plantação
             AtualizarGraficos();
         }
 
-
-
-        private void btn_Anterio_Click(object sender, EventArgs e)
-        {
-            // Atualiza o índice para a plantação anterior
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : monitoramentos.Count - 1;  // Vai para a anterior ou volta para o último
-
-            // Exibe o monitoramento da plantação no índice atual
-            ExibirMonitoramento(currentIndex);
-
-            // Atualiza os gráficos com os dados da plantação atual
-            AtualizarGraficos();
-        }
         private void PosicionarSaudeNaParteSuperior(Control txtControl, Control caixaControl)
         {
             // Define o deslocamento vertical para o topo (com um pequeno espaço de 10px)
@@ -709,7 +699,7 @@ namespace DashboardForm
             }
         }
 
-        private void btn_addRow_Click(object sender, EventArgs e)
+        private void btn_addRow_Click_1(object sender, EventArgs e)
         {
             if (isEditingRow)
             {
@@ -781,53 +771,7 @@ namespace DashboardForm
             }
         }
 
-        private void salvar_Click(object sender, EventArgs e)
-        {
-            // Validar se o DataTable possui alterações
-            if (controle_aguaTable.GetChanges() != null)
-            {
-                // Verificar as linhas antes de salvar
-                foreach (DataRow linha in controle_aguaTable.Rows)
-                {
-                    if (linha.RowState == DataRowState.Added || linha.RowState == DataRowState.Modified)
-                    {
-                        if (!ValidarLinhaAgua(linha))
-                        {
-                            MessageBox.Show("Por favor, preenFha todos os campos obrigatórios.");
-                            return; // Interrompe se a linha não passar na validação
-                        }
-                    }
-                }
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-
-                        // Atualiza os dados na tabela de pragas/doenças usando o DataAdapter
-                        adapter.Update(controle_aguaTable); // Insere ou atualiza as linhas alteradas no banco
-
-                        MessageBox.Show("Dados de pragas/doenças salvos com sucesso!");
-
-                        // Confirmar as alterações no DataTable
-                        controle_aguaTable.AcceptChanges();
-
-                        tabela_Agua.Refresh(); // Atualizar exibição no DataGridView
-                        AtualizarGraficos();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao salvar dados: " + ex.Message);
-                        Console.WriteLine("Erro ao salvar os dados: " + ex.Message);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Nenhuma alteração para salvar.");
-            }
-        }
 
         private void loadControleLuz()
         {
@@ -1273,7 +1217,7 @@ namespace DashboardForm
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btn_estoque_Click(object sender, EventArgs e)
         {
             EstoqueForm estoqueForm = new EstoqueForm();
             this.Hide(); // Opcional: oculta o formulário atual
@@ -1288,24 +1232,17 @@ namespace DashboardForm
             telaCultivo.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_saude_Click_1(object sender, EventArgs e)
         {
-            telaSaude telassaude = new telaSaude();
+            telaSaude telassa = new telaSaude();
             this.Hide();
-            telassaude.Show();
+            telassa.Show();
         }
 
 
-        private void btn_monitoramento_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void btn_relatorio_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
 
 
 
@@ -1445,20 +1382,116 @@ namespace DashboardForm
 
         private bool isEditingRow = false;
 
-        private void tela_saida_Click(object sender, EventArgs e)
+
+
+        private void btn_Proximo_Click(object sender, EventArgs e)
         {
+            currentIndex = (currentIndex < monitoramentos.Count - 1) ? currentIndex + 1 : 0;
+            ExibirMonitoramento(currentIndex);
+            AtualizarGraficos();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Caminho do arquivo PDF
+                string caminhoPdf = @"C:\Users\joaok\OneDrive\Downloads\Manual do Software.pdf";
 
+                // Verifica se o arquivo existe
+                if (File.Exists(caminhoPdf))
+                {
+                    // Cria um novo processo para abrir o PDF no visualizador padrão do sistema
+                    ProcessStartInfo startInfo = new ProcessStartInfo()
+                    {
+                        FileName = caminhoPdf,
+                        UseShellExecute = true // Usar o shell do sistema para abrir o arquivo com o programa padrão
+                    };
+                    Process.Start(startInfo);
+                }
+                else
+                {
+                    MessageBox.Show("O arquivo PDF não foi encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar abrir o arquivo PDF: " + ex.Message);
+            }
+
+        }
+
+        private void tela_saida_Click_1(object sender, EventArgs e)
+        {
             // Exibir a tela de login
             Form1 telaLogin = new Form1();
             this.Hide();
             telaLogin.Show();
+        }
+
+        private void txtPorcetangemLUZ_Click(object sender, EventArgs e)
+        {
 
         }
 
+        private void salvar_Click(object sender, EventArgs e)
+        {
+            // Validar se o DataTable possui alterações
+            if (controle_aguaTable.GetChanges() != null)
+            {
+                // Verificar as linhas antes de salvar
+                foreach (DataRow linha in controle_aguaTable.Rows)
+                {
+                    if (linha.RowState == DataRowState.Added || linha.RowState == DataRowState.Modified)
+                    {
+                        if (!ValidarLinhaAgua(linha))
+                        {
+                            MessageBox.Show("Por favor, preenFha todos os campos obrigatórios.");
+                            return; // Interrompe se a linha não passar na validação
+                        }
+                    }
+                }
 
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        // Atualiza os dados na tabela de pragas/doenças usando o DataAdapter
+                        adapter.Update(controle_aguaTable); // Insere ou atualiza as linhas alteradas no banco
+
+                        MessageBox.Show("Dados de pragas/doenças salvos com sucesso!");
+
+                        // Confirmar as alterações no DataTable
+                        controle_aguaTable.AcceptChanges();
+
+                        tabela_Agua.Refresh(); // Atualizar exibição no DataGridView
+                        AtualizarGraficos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao salvar dados: " + ex.Message);
+                        Console.WriteLine("Erro ao salvar os dados: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma alteração para salvar.");
+            }
+        }
+
+        private void btn_relatorio_Click_1(object sender, EventArgs e)
+        {
+            telaRelatorio telaRelatorio = new telaRelatorio();
+            this.Hide();
+            telaRelatorio.Show();
+        }
     }
+
 }
+
 
 
 

@@ -37,24 +37,20 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel26 = new Panel();
             pictureBox4 = new PictureBox();
             BarraPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
@@ -85,8 +81,6 @@
             Cabecalho = new Guna.UI2.WinForms.Guna2GradientPanel();
             pictureBox16 = new PictureBox();
             labelPrimeiroNome = new Label();
-            pictureBox18 = new PictureBox();
-            pictureBox17 = new PictureBox();
             panel1 = new Panel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pictureBox15 = new PictureBox();
@@ -94,21 +88,20 @@
             tabela_Agua = new Guna.UI2.WinForms.Guna2DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewComboBoxColumn();
-            vScrollBar1 = new VScrollBar();
             paneMonitoramenteo = new Panel();
             panel24 = new Panel();
             btn_Anterio = new PictureBox();
             panel25 = new Panel();
             btn_Proximo = new PictureBox();
             panelmonitoramentoPlantas = new Panel();
-            caixaLuz = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            caixaLuz = new Panel();
             graficoLuz = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            txtPorcetagemLuz = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txtPorcetangemLUZ = new Guna.UI2.WinForms.Guna2HtmlLabel();
             titulografico2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            caixaAgua = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            caixaAgua = new Panel();
+            titulografico1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             graficoagua = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             txtPorcentagemAguaGasta = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            titulografico1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             caixaEspecie = new Panel();
             txtEspecie = new Label();
             label1 = new Label();
@@ -154,8 +147,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             Cabecalho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tabela_Agua).BeginInit();
@@ -220,7 +211,6 @@
             BarraPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges2;
             BarraPesquisa.Size = new Size(312, 36);
             BarraPesquisa.TabIndex = 0;
-            BarraPesquisa.TextChanged += BarraPesquisa_TextChanged;
             // 
             // panel2
             // 
@@ -284,6 +274,7 @@
             button1.Size = new Size(144, 35);
             button1.TabIndex = 20;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox13
             // 
@@ -316,7 +307,7 @@
             tela_saida.Size = new Size(144, 35);
             tela_saida.TabIndex = 18;
             tela_saida.UseVisualStyleBackColor = true;
-            tela_saida.Click += tela_saida_Click;
+            tela_saida.Click += tela_saida_Click_1;
             // 
             // label35
             // 
@@ -350,7 +341,7 @@
             btn_relatorio.Size = new Size(144, 35);
             btn_relatorio.TabIndex = 17;
             btn_relatorio.UseVisualStyleBackColor = true;
-            btn_relatorio.Click += btn_relatorio_Click;
+            btn_relatorio.Click += btn_relatorio_Click_1;
             // 
             // pictureBox7
             // 
@@ -411,7 +402,7 @@
             btn_saude.Size = new Size(144, 35);
             btn_saude.TabIndex = 14;
             btn_saude.UseVisualStyleBackColor = true;
-            btn_saude.Click += button3_Click;
+            btn_saude.Click += btn_saude_Click_1;
             // 
             // label31
             // 
@@ -479,7 +470,7 @@
             btn_estoque.Size = new Size(144, 35);
             btn_estoque.TabIndex = 12;
             btn_estoque.UseVisualStyleBackColor = true;
-            btn_estoque.Click += button1_Click_1;
+            btn_estoque.Click += btn_estoque_Click;
             // 
             // guna2Separator3
             // 
@@ -507,8 +498,6 @@
             Cabecalho.BackColor = Color.Transparent;
             Cabecalho.Controls.Add(pictureBox16);
             Cabecalho.Controls.Add(labelPrimeiroNome);
-            Cabecalho.Controls.Add(pictureBox18);
-            Cabecalho.Controls.Add(pictureBox17);
             Cabecalho.Controls.Add(panel1);
             Cabecalho.Controls.Add(panel26);
             Cabecalho.Controls.Add(BarraPesquisa);
@@ -544,28 +533,6 @@
             labelPrimeiroNome.Size = new Size(75, 20);
             labelPrimeiroNome.TabIndex = 7;
             labelPrimeiroNome.Text = "Fernando";
-            // 
-            // pictureBox18
-            // 
-            pictureBox18.Cursor = Cursors.Hand;
-            pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(1021, 32);
-            pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(20, 20);
-            pictureBox18.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox18.TabIndex = 9;
-            pictureBox18.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            pictureBox17.Cursor = Cursors.Hand;
-            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
-            pictureBox17.Location = new Point(1057, 32);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(20, 20);
-            pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox17.TabIndex = 8;
-            pictureBox17.TabStop = false;
             // 
             // panel1
             // 
@@ -673,13 +640,6 @@
             Column2.HeaderText = "Column2";
             Column2.Name = "Column2";
             // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Location = new Point(1228, 74);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(27, 605);
-            vScrollBar1.TabIndex = 48;
-            // 
             // paneMonitoramenteo
             // 
             paneMonitoramenteo.BackColor = Color.White;
@@ -710,7 +670,7 @@
             btn_Anterio.SizeMode = PictureBoxSizeMode.Zoom;
             btn_Anterio.TabIndex = 2;
             btn_Anterio.TabStop = false;
-            btn_Anterio.Click += btn_Anterio_Click;
+            btn_Anterio.Click += btn_Anterio_Click_1;
             // 
             // panel25
             // 
@@ -730,7 +690,7 @@
             btn_Proximo.SizeMode = PictureBoxSizeMode.Zoom;
             btn_Proximo.TabIndex = 11;
             btn_Proximo.TabStop = false;
-            btn_Proximo.Click += btn_Proximo_Click_1;
+            btn_Proximo.Click += btn_Proximo_Click;
             // 
             // panelmonitoramentoPlantas
             // 
@@ -750,50 +710,50 @@
             // 
             // caixaLuz
             // 
-            caixaLuz.BorderRadius = 4;
+            caixaLuz.BackColor = Color.White;
+            caixaLuz.BorderStyle = BorderStyle.FixedSingle;
             caixaLuz.Controls.Add(graficoLuz);
             caixaLuz.Controls.Add(titulografico2);
-            caixaLuz.CustomizableEdges = customizableEdges6;
-            caixaLuz.Location = new Point(279, 191);
+            caixaLuz.Location = new Point(282, 191);
             caixaLuz.Name = "caixaLuz";
-            caixaLuz.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            caixaLuz.Size = new Size(132, 157);
-            caixaLuz.TabIndex = 20;
+            caixaLuz.Size = new Size(129, 155);
+            caixaLuz.TabIndex = 21;
             // 
             // graficoLuz
             // 
             graficoLuz.BackColor = Color.Transparent;
-            graficoLuz.Controls.Add(txtPorcetagemLuz);
+            graficoLuz.Controls.Add(txtPorcetangemLUZ);
             graficoLuz.FillColor = Color.FromArgb(200, 213, 218, 223);
             graficoLuz.Font = new Font("Segoe UI", 12F);
             graficoLuz.ForeColor = Color.White;
-            graficoLuz.Location = new Point(15, 39);
+            graficoLuz.Location = new Point(10, 30);
             graficoLuz.Minimum = 0;
             graficoLuz.Name = "graficoLuz";
-            graficoLuz.ProgressColor = Color.FromArgb(244, 186, 0);
-            graficoLuz.ProgressColor2 = Color.FromArgb(244, 186, 0);
+            graficoLuz.ProgressColor = Color.FromArgb(255, 182, 0);
+            graficoLuz.ProgressColor2 = Color.FromArgb(255, 182, 0);
             graficoLuz.ShadowDecoration.CustomizableEdges = customizableEdges5;
             graficoLuz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             graficoLuz.Size = new Size(103, 103);
             graficoLuz.TabIndex = 19;
             graficoLuz.Text = "guna2CircleProgressBar1";
             // 
-            // txtPorcetagemLuz
+            // txtPorcetangemLUZ
             // 
-            txtPorcetagemLuz.BackColor = Color.Transparent;
-            txtPorcetagemLuz.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            txtPorcetagemLuz.ForeColor = Color.Black;
-            txtPorcetagemLuz.Location = new Point(36, 38);
-            txtPorcetagemLuz.Name = "txtPorcetagemLuz";
-            txtPorcetagemLuz.Size = new Size(30, 27);
-            txtPorcetagemLuz.TabIndex = 20;
-            txtPorcetagemLuz.Text = "0%";
+            txtPorcetangemLUZ.BackColor = Color.Transparent;
+            txtPorcetangemLUZ.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            txtPorcetangemLUZ.ForeColor = Color.Black;
+            txtPorcetangemLUZ.Location = new Point(27, 38);
+            txtPorcetangemLUZ.Name = "txtPorcetangemLUZ";
+            txtPorcetangemLUZ.Size = new Size(30, 27);
+            txtPorcetangemLUZ.TabIndex = 20;
+            txtPorcetangemLUZ.Text = "0%";
+            txtPorcetangemLUZ.Click += txtPorcetangemLUZ_Click;
             // 
             // titulografico2
             // 
             titulografico2.BackColor = Color.Transparent;
             titulografico2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            titulografico2.Location = new Point(56, 14);
+            titulografico2.Location = new Point(51, 3);
             titulografico2.Name = "titulografico2";
             titulografico2.Size = new Size(25, 17);
             titulografico2.TabIndex = 19;
@@ -801,15 +761,24 @@
             // 
             // caixaAgua
             // 
-            caixaAgua.BorderRadius = 4;
-            caixaAgua.Controls.Add(graficoagua);
+            caixaAgua.BackColor = Color.White;
+            caixaAgua.BorderStyle = BorderStyle.FixedSingle;
             caixaAgua.Controls.Add(titulografico1);
-            caixaAgua.CustomizableEdges = customizableEdges9;
-            caixaAgua.Location = new Point(78, 191);
+            caixaAgua.Controls.Add(graficoagua);
+            caixaAgua.Location = new Point(73, 191);
             caixaAgua.Name = "caixaAgua";
-            caixaAgua.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            caixaAgua.Size = new Size(132, 157);
-            caixaAgua.TabIndex = 20;
+            caixaAgua.Size = new Size(129, 155);
+            caixaAgua.TabIndex = 4;
+            // 
+            // titulografico1
+            // 
+            titulografico1.BackColor = Color.Transparent;
+            titulografico1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            titulografico1.Location = new Point(46, 3);
+            titulografico1.Name = "titulografico1";
+            titulografico1.Size = new Size(37, 17);
+            titulografico1.TabIndex = 19;
+            titulografico1.Text = "AGUA";
             // 
             // graficoagua
             // 
@@ -818,12 +787,12 @@
             graficoagua.FillColor = Color.FromArgb(200, 213, 218, 223);
             graficoagua.Font = new Font("Segoe UI", 12F);
             graficoagua.ForeColor = Color.White;
-            graficoagua.Location = new Point(15, 39);
+            graficoagua.Location = new Point(10, 30);
             graficoagua.Minimum = 0;
             graficoagua.Name = "graficoagua";
             graficoagua.ProgressColor = Color.FromArgb(2, 115, 115);
             graficoagua.ProgressColor2 = Color.FromArgb(2, 115, 115);
-            graficoagua.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            graficoagua.ShadowDecoration.CustomizableEdges = customizableEdges6;
             graficoagua.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             graficoagua.Size = new Size(103, 103);
             graficoagua.TabIndex = 19;
@@ -840,23 +809,13 @@
             txtPorcentagemAguaGasta.TabIndex = 20;
             txtPorcentagemAguaGasta.Text = "0%";
             // 
-            // titulografico1
-            // 
-            titulografico1.BackColor = Color.Transparent;
-            titulografico1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            titulografico1.Location = new Point(50, 14);
-            titulografico1.Name = "titulografico1";
-            titulografico1.Size = new Size(37, 17);
-            titulografico1.TabIndex = 19;
-            titulografico1.Text = "AGUA";
-            // 
             // caixaEspecie
             // 
             caixaEspecie.BackColor = Color.White;
             caixaEspecie.BorderStyle = BorderStyle.FixedSingle;
             caixaEspecie.Controls.Add(txtEspecie);
             caixaEspecie.Controls.Add(label1);
-            caixaEspecie.Location = new Point(41, 17);
+            caixaEspecie.Location = new Point(44, 17);
             caixaEspecie.Name = "caixaEspecie";
             caixaEspecie.Size = new Size(113, 67);
             caixaEspecie.TabIndex = 0;
@@ -887,7 +846,7 @@
             caixaTipo.BorderStyle = BorderStyle.FixedSingle;
             caixaTipo.Controls.Add(label4);
             caixaTipo.Controls.Add(txtTipo);
-            caixaTipo.Location = new Point(183, 90);
+            caixaTipo.Location = new Point(189, 90);
             caixaTipo.Name = "caixaTipo";
             caixaTipo.Size = new Size(113, 67);
             caixaTipo.TabIndex = 2;
@@ -1011,7 +970,7 @@
             caixaPrevisao.BorderStyle = BorderStyle.FixedSingle;
             caixaPrevisao.Controls.Add(label8);
             caixaPrevisao.Controls.Add(txtPrevisao);
-            caixaPrevisao.Location = new Point(183, 17);
+            caixaPrevisao.Location = new Point(189, 17);
             caixaPrevisao.Name = "caixaPrevisao";
             caixaPrevisao.Size = new Size(113, 67);
             caixaPrevisao.TabIndex = 4;
@@ -1185,7 +1144,7 @@
             // salvar
             // 
             salvar.BorderRadius = 4;
-            salvar.CustomizableEdges = customizableEdges11;
+            salvar.CustomizableEdges = customizableEdges7;
             salvar.DisabledState.BorderColor = Color.DarkGray;
             salvar.DisabledState.CustomBorderColor = Color.DarkGray;
             salvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -1197,7 +1156,7 @@
             salvar.ForeColor = Color.White;
             salvar.Location = new Point(1103, 587);
             salvar.Name = "salvar";
-            salvar.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            salvar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             salvar.Size = new Size(120, 34);
             salvar.TabIndex = 53;
             salvar.Text = "SALVAR DADOS";
@@ -1206,7 +1165,7 @@
             // btn_addRow
             // 
             btn_addRow.BorderRadius = 4;
-            btn_addRow.CustomizableEdges = customizableEdges13;
+            btn_addRow.CustomizableEdges = customizableEdges9;
             btn_addRow.DisabledState.BorderColor = Color.DarkGray;
             btn_addRow.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_addRow.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -1218,16 +1177,16 @@
             btn_addRow.ForeColor = Color.White;
             btn_addRow.Location = new Point(964, 587);
             btn_addRow.Name = "btn_addRow";
-            btn_addRow.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_addRow.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btn_addRow.Size = new Size(120, 34);
             btn_addRow.TabIndex = 54;
             btn_addRow.Text = "INSERIR  DADOS";
-            btn_addRow.Click += btn_addRow_Click;
+            btn_addRow.Click += btn_addRow_Click_1;
             // 
             // btn_linha_luz
             // 
             btn_linha_luz.BorderRadius = 4;
-            btn_linha_luz.CustomizableEdges = customizableEdges15;
+            btn_linha_luz.CustomizableEdges = customizableEdges11;
             btn_linha_luz.DisabledState.BorderColor = Color.DarkGray;
             btn_linha_luz.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_linha_luz.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -1239,7 +1198,7 @@
             btn_linha_luz.ForeColor = Color.White;
             btn_linha_luz.Location = new Point(964, 781);
             btn_linha_luz.Name = "btn_linha_luz";
-            btn_linha_luz.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btn_linha_luz.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btn_linha_luz.Size = new Size(120, 34);
             btn_linha_luz.TabIndex = 55;
             btn_linha_luz.Text = "INSERIR  DADOS";
@@ -1248,7 +1207,7 @@
             // inserirDadosLuz
             // 
             inserirDadosLuz.BorderRadius = 4;
-            inserirDadosLuz.CustomizableEdges = customizableEdges17;
+            inserirDadosLuz.CustomizableEdges = customizableEdges13;
             inserirDadosLuz.DisabledState.BorderColor = Color.DarkGray;
             inserirDadosLuz.DisabledState.CustomBorderColor = Color.DarkGray;
             inserirDadosLuz.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -1260,7 +1219,7 @@
             inserirDadosLuz.ForeColor = Color.White;
             inserirDadosLuz.Location = new Point(1105, 781);
             inserirDadosLuz.Name = "inserirDadosLuz";
-            inserirDadosLuz.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            inserirDadosLuz.ShadowDecoration.CustomizableEdges = customizableEdges14;
             inserirDadosLuz.Size = new Size(120, 34);
             inserirDadosLuz.TabIndex = 56;
             inserirDadosLuz.Text = "SALVAR DADOS";
@@ -1291,7 +1250,6 @@
             Controls.Add(tabela_Luz);
             Controls.Add(label2);
             Controls.Add(tabela_Agua);
-            Controls.Add(vScrollBar1);
             Controls.Add(paneMonitoramenteo);
             Controls.Add(panel3);
             Controls.Add(Cabecalho);
@@ -1313,8 +1271,6 @@
             Cabecalho.ResumeLayout(false);
             Cabecalho.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
             ((System.ComponentModel.ISupportInitialize)tabela_Agua).EndInit();
@@ -1378,8 +1334,6 @@
         private Label label38;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private PictureBox pictureBox15;
-        private PictureBox pictureBox18;
-        private PictureBox pictureBox17;
         private Label labelPrimeiroNome;
         private PictureBox pictureBox16;
         private Button btn_estoque;
@@ -1393,18 +1347,13 @@
         private Guna.UI2.WinForms.Guna2DataGridView tabela_Agua;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewComboBoxColumn Column2;
-        private VScrollBar vScrollBar1;
         private Panel paneMonitoramenteo;
         private Panel panel24;
         private PictureBox btn_Anterio;
         private Panel panel25;
         private PictureBox btn_Proximo;
         private Panel panelmonitoramentoPlantas;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel caixaLuz;
-        private Guna.UI2.WinForms.Guna2CircleProgressBar graficoLuz;
-        private Guna.UI2.WinForms.Guna2HtmlLabel txtPorcetagemLuz;
         private Guna.UI2.WinForms.Guna2HtmlLabel titulografico2;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel caixaAgua;
         private Guna.UI2.WinForms.Guna2CircleProgressBar graficoagua;
         private Guna.UI2.WinForms.Guna2HtmlLabel txtPorcentagemAguaGasta;
         private Guna.UI2.WinForms.Guna2HtmlLabel titulografico1;
@@ -1443,5 +1392,9 @@
         private PictureBox pictureBox14;
         private Button button1;
         private Label label3;
+        private Panel caixaLuz;
+        private Guna.UI2.WinForms.Guna2CircleProgressBar graficoLuz;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtPorcetangemLUZ;
+        private Panel caixaAgua;
     }
 }
